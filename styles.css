@@ -1,0 +1,28 @@
+#quiz_answer1 img {
+    display: block;
+}
+
+#quiz_answer2 img {
+    display: block;
+}
+
+svg {
+    display: block;
+    margin: auto;
+}
+
+#quiz_question_div {
+    text-align: center;
+}
+
+#quiz_answers_div {
+    text-align: center;
+}
+
+#quiz_result_div {
+    text-align: center;
+}
+
+#quiz_answers_result_div {
+    text-align: center;
+}
