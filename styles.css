@@ -6,7 +6,7 @@ body {
 }
 
 /* HEADER */
-#page-head {
+#page_head {
     z-index: 9;
     padding: 10px;
     max-width: calc(100% - 20px);
@@ -14,13 +14,21 @@ body {
     background-color: #ffffff;
     font-size: 30px;
     border-radius: 10px;
+    align-content: center;
 }
 
-#page-head img {
+#info_button {
+    float: right;
+}
+
+#page_title {
+    align-content: center;
+}
+#page_head img {
     width: 30px;
 }
 
-#page-body {
+#page_body {
     margin-top: 20px;
 
 }
