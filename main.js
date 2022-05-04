@@ -1,7 +1,7 @@
 const express = require('express');
 const { Client } = require("pg");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const client = new Client({
   user: "hkweungc",
@@ -36,5 +36,6 @@ app.get('/food', async (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Appl. lytter på http://localhost:${port}`)
+  if (err) throw err;
+  console.log(`listening to port: ${port}`);
 })
