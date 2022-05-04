@@ -1,3 +1,9 @@
+/* (A) ENTIRE PAGE */
+body {
+    padding: 0;
+    margin: 0;
+  }
+
 /* HEADER */
 #page-head {
     /* FIXED AT TOP */
@@ -7,7 +13,19 @@
 
     /* HEADER DIMENSIONS */
     width: 100%;
-    height: 30px;
+    height: 50px;
+    padding: 10px;
+
+    background-color: rgb(91, 87, 99);
+    font-size: 40px;
+}
+
+#page-head img {
+    width: 50px;
+}
+
+#page-body {
+    margin-top: 100px;
     padding: 10px;
 }
 
