@@ -13,6 +13,9 @@ const client = new Client({
 
 client.connect();
 
+app.use(express.text());
+app.use(express.static("public"))
+
 const food_qry = "SELECT * FROM food LIMIT 20";
 
 console.log("Querying database ...");
