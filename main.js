@@ -36,6 +36,5 @@ app.get('/food', async (req, res) => {
 })
 
 app.listen(port, () => {
-  if (err) throw err;
   console.log(`listening to port: ${port}`);
 })
