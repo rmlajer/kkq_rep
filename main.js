@@ -14,11 +14,11 @@ const client = new Client({
 client.connect();
 
 app.use(express.text());
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 console.log("Querying database ...");
 
-app.get('/question/:id', async (req, res) => {
+app.get('/api/question/:id', async (req, res) => {
   try {
     let queryData = await client.query(
       `SELECT food_id, name
@@ -37,7 +37,7 @@ app.get('/question/:id', async (req, res) => {
   }
 })
 
-app.get('/questionbreakdown/:id', async (req, res) => {
+app.get('/api/questionbreakdown/:id', async (req, res) => {
   try {
     let queryData = await client.query(
       `SELECT food_id, 
@@ -64,7 +64,7 @@ app.get('/questionbreakdown/:id', async (req, res) => {
   }
 })
 
-app.get('/emission_category', async (req, res) => {
+app.get('/api/emission_category', async (req, res) => {
   try {
     let queryData = await client.query(`SELECT * FROM emission_category`);
     res.json({
@@ -79,7 +79,7 @@ app.get('/emission_category', async (req, res) => {
   }
 })
 
-app.get('/result', async (req, res) => {
+app.get('/api/result/:id', async (req, res) => {
   try {
     let queryData = await client.query(
       `SELECT answer_id,
@@ -104,7 +104,7 @@ app.get('/result', async (req, res) => {
   }
 })
 
-app.get('/result_level', async (req, res) => {
+app.get('/api/result_level/:id', async (req, res) => {
   try {
     let queryData = await client.query(
       `SELECT * FROM result_level WHERE level_id=${req.params.id}`);
@@ -119,8 +119,6 @@ app.get('/result_level', async (req, res) => {
     })
   }
 })
-
-
 
 app.listen(port, () => {
   console.log(`listening to port: ${port}`);
