@@ -1,11 +1,11 @@
-/* ENTIRE PAGE */
+/* QUESTION.HTML STYLING */
+
 body {
     padding: 20px;
     margin: 0;
     background-color: #90da50;
 }
 
-/* HEADER */
 #page_head {
     z-index: 9;
     padding: 10px;
@@ -29,11 +29,7 @@ body {
     width: 30px;
 }
 
-#page_body {
-    margin-top: 20px;
-}
-
-#quiz_answer1 {
+#question_choice_1 {
     background-color: #f98a2f;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -44,14 +40,14 @@ body {
     color: #444444;
 }
 
-#quiz_answer1:hover {
+#question_choice_1:hover {
     transform: scale(1.05);
     -webkit-transform: transform 0.1s ease-in-out;
     -moz-transform: transform 0.1s ease-in-out;
     -ms-transform: transform 0.1s ease-in-out;
 }
 
-#quiz_answer2 {
+#question_choice_2 {
     background-color: #65c6e3;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -61,7 +57,7 @@ body {
     color: #444444;
 }
 
-#quiz_answer2:hover {
+#question_choice_2:hover {
     transform: scale(1.05);
     -webkit-transform: transform 0.1s ease-in-out;
     -moz-transform: transform 0.1s ease-in-out;
@@ -109,6 +105,7 @@ svg {
     width: calc(100% - 20px);
     margin: auto;
     padding: 10px;
+    margin-top: 20px;
 }
 
 #quiz_answers_div {
@@ -123,3 +120,52 @@ svg {
 #quiz_answers_result_div {
     text-align: center;
 }
+
+/* ANSWER.HTML STYLING */
+
+#quiz_answer1 {
+    background-color: #f98a2f;
+    padding: 35px 50px 35px 50px;
+    border-radius: 10px;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-right: 100px;
+    color: #444444;
+}
+
+#quiz_answer2 {
+    background-color: #65c6e3;
+    padding: 35px 50px 35px 50px;
+    border-radius: 10px;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #444444;
+}
+
+#quiz_answer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#emission_breakdown {
+    margin-top: 200px;
+}
+
+#quiz_result_text {
+    text-align: center;
+}
+
+#quiz_answer_page {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: calc(100vh - 40px - 50px - 45px);
+    width: calc(100% - 20px);
+    margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+}
+
