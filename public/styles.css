@@ -169,3 +169,23 @@ svg {
     margin-top: 20px;
 }
 
+#next_button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+/* RESULT.HTML STYLING */
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
