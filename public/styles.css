@@ -4,6 +4,10 @@ body {
     padding: 20px;
     margin: 0;
     background-color: #90da50;
+    background: url("images/field.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #page_head {
@@ -11,7 +15,7 @@ body {
     padding: 10px;
     max-width: calc(100% - 20px);
     height: 35px;
-    background-color: #ffffff;
+    background-color: #ffffffCC;
     font-size: 30px;
     border-radius: 10px;
 }
@@ -29,7 +33,7 @@ body {
     width: 30px;
 }
 
-#question_choice_1 {
+#option_0_button {
     background-color: #f98a2f;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -40,14 +44,14 @@ body {
     color: #444444;
 }
 
-#question_choice_1:hover {
+#option_0_button:hover {
     transform: scale(1.05);
     -webkit-transform: transform 0.1s ease-in-out;
     -moz-transform: transform 0.1s ease-in-out;
     -ms-transform: transform 0.1s ease-in-out;
 }
 
-#question_choice_2 {
+#option_1_button {
     background-color: #65c6e3;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -57,7 +61,7 @@ body {
     color: #444444;
 }
 
-#question_choice_2:hover {
+#option_1_button:hover {
     transform: scale(1.05);
     -webkit-transform: transform 0.1s ease-in-out;
     -moz-transform: transform 0.1s ease-in-out;
@@ -97,7 +101,7 @@ svg {
 
 
 #quiz_question_page {
-    background-color: #ffffff;
+    background-color: #ffffffCC;
     border-radius: 10px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -188,4 +192,3 @@ svg {
     display: table;
     clear: both;
 }
-
