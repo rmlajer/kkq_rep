@@ -3,6 +3,7 @@ const { Client } = require("pg");
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 const client = new Client({
   user: "hkweungc",
   host: "abul.db.elephantsql.com",
@@ -140,3 +141,5 @@ app.post('/api/answer/:question_id/:option_chosen/:user_id', async (req, res) =>
 app.listen(port, () => {
   console.log(`listening to port: ${port}`);
 })
+
+
