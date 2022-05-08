@@ -8,13 +8,9 @@
   <script src="scripts/d3.js"></script>
   <script src="scripts/general.js"></script>
   <script src="scripts/question.js"></script>
-  <!--Checks count-->
-  <script>check_count();</script>
 </head>
 
 <body onload="page_load()">
-
-
 
   <!-- FIXED HEADER --> 
   <header id="page_head">
@@ -30,8 +26,8 @@
 
       <div id="quiz_answers_div">
         <!--Added function calls for button_click and question_counter. Added URL-->
-        <button id="option_0_button" onclick="button_click(id, this); question_counter()" value = "/answer.html">ANSWER1</button>
-        <button id="option_1_button" onclick="button_click(id, this); question_counter()" value = "/answer.html">ANSWER2</button>
+        <button id="option_0_button" onclick="option_button_click(value);" value=0>ANSWER1</button>
+        <button id="option_1_button" onclick="option_button_click(value);" value=1>ANSWER2</button>
       </div>
     </div>
 </body>

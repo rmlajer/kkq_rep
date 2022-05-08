@@ -2,21 +2,19 @@ function test () {
     console.log("test");
 }
 
+//Simple log check for localQuestionCounter.
+function check_question_id() {
+    console.log("localQuestionId: " + localStorage.getItem('localQuestionId'));
+    console.log("localAnswers: " + localStorage.getItem('localAnswers'));
+}
 
 //Controls button clicks, redirects to href value from button, after question 10 directs to result.
-function button_click(id, el) {
-    var retrievedObject = localStorage.getItem('localQuestionCounter');
-    if(retrievedObject<10){
-        var url = el.value;
-        location.href = url;
+function next_button_click() {
+    let question_id = localStorage.getItem('localQuestionId');
+    if(question_id<10){
+        location.href = '/question.html';
     }
-    else location.href = '/result.html'
-    
+    else {
+        location.href = '/result.html'
+    } 
 }
-
-//Simple log check for localQuestionCounter.
-function check_count() {
-    var retrievedObject = localStorage.getItem('localQuestionCounter');
-    console.log("localQuestionCounter: " + retrievedObject);
-}
-

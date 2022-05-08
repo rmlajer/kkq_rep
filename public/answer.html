@@ -7,11 +7,10 @@
     <title>KlimaKostQuizzen by @taenkehattene</title>
     <script src="scripts/d3.js"></script>
     <script src="scripts/general.js"></script>
-    <!--Checking localQuestionCounter here for test-->
-    <script>check_count();</script>
+    <script src="scripts/answer.js"></script>
 </head>
 
-<body>
+<body onload="page_load()">
 
     <!-- FIXED HEADER -->
     <header id="page_head">
@@ -37,7 +36,7 @@
             </svg>
         </div>
         <div id="next_button">
-            <button id="answer_next" onclick="button_click(id, this)" value = "/question.html">NEXT</button>
+            <button id="answer_next" onclick="next_button_click()">NEXT</button>
         </div>
     </div>
 
