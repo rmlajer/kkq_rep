@@ -161,6 +161,8 @@ svg {
 #quiz_answer {
     margin-top: 50px;
     margin-bottom: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #444444;
 }
 
 #emission_breakdown {
