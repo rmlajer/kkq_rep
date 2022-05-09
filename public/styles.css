@@ -98,14 +98,11 @@ svg {
     color: #555555;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-top: 25vh;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
+    min-height: 100px;
 }
 
-@media screen and (max-width: 768px) {
-    #quiz_question_div {
-        margin-top: 10px;
-    }
-}
+
 
 
 #quiz_question_page {
@@ -229,19 +226,33 @@ svg {
     }
     
 }    
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 793px) {
     
+    #quiz_question_page {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
     #option_0_button {
         display: block;
         align-items: center;
         width: 100%;
         max-width: 421px;
+        margin-right: 20px;
+        margin-bottom: 20px;
     }
     #option_1_button {
         display: block;
         align-items: center;
         width: 100%;
         max-width: 421px;
+        margin-top: 20px;
     }
 
+    #quiz_question_div {
+        margin-top: 10px;
+    }
 }
