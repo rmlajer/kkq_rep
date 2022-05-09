@@ -16,6 +16,6 @@ function next_button_click() {
         location.href = '/question.html';
     }
     else {
-        location.href = '/result.html'
+        location.href = '/result.html';
     } 
 }

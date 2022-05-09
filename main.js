@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 console.log("Querying database ...");
 
 app.get('/api/question/:id', async (req, res) => {
+  console.log(req.params.id);
   try {
     let queryData = await client.query(
       `SELECT food_id, name
