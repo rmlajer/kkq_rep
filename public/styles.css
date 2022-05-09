@@ -28,7 +28,7 @@ body {
 
 #info_button {
     float: right;
-    margin-top: -31px;
+    margin-top: -35px;
 }
 
 #page_title {
@@ -48,6 +48,7 @@ body {
     font-size: 25px;
     margin-right: 250px;
     color: #444444;
+    min-width: 240px;
 }
 
 #option_0_button:hover {
@@ -65,6 +66,7 @@ body {
     font-weight: bold;
     font-size: 25px;
     color: #444444;
+    min-width: 240px;
 }
 
 #option_1_button:hover {
@@ -142,6 +144,7 @@ svg {
     font-size: 25px;
     margin-right: 100px;
     color: #444444;
+    
 }
 
 #quiz_answer2 {
@@ -152,6 +155,7 @@ svg {
     font-weight: bold;
     font-size: 25px;
     color: #444444;
+    
 }
 
 #quiz_answer {
@@ -183,10 +187,18 @@ svg {
     position: fixed;
     bottom: 40px;
     right: 40px;
+    border: 0;
+    background: transparent; 
+    cursor: pointer;        
 }
+#next_button:hover {
+    transform: scale(1.05);
+    -webkit-transform: transform 0.1s ease-in-out;
+    -moz-transform: transform 0.1s ease-in-out;
+    -ms-transform: transform 0.1s ease-in-out;
 
 /* RESULT.HTML STYLING */
-
+}
 .column {
     float: left;
     width: 50%;
@@ -197,4 +209,37 @@ svg {
     content: "";
     display: table;
     clear: both;
+}
+@media only screen and (max-width: 500px) {
+    #page_title {
+        font-size: 22px;
+        text-align: left;
+        margin-left: 5px;
+                  
+    }
+    #page_head {
+        height: 27px;
+
+    }
+    #info_button {
+
+        margin-top: -30px;
+    }
+    
+}    
+@media only screen and (max-width: 768px) {
+    
+    #option_0_button {
+        display: block;
+        align-items: center;
+        width: 100%;
+        max-width: 421px;
+    }
+    #option_1_button {
+        display: block;
+        align-items: center;
+        width: 100%;
+        max-width: 421px;
+    }
+
 }
