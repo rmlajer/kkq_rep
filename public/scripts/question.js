@@ -6,18 +6,19 @@ function page_load() {
     get_question(localStorage.getItem('localQuestionId'));
 }
 
+//Henter svarmuligheder fra question database og appender disse til button text, fjerner alt efter første komma
 function get_question(id) {
     d3.json("/api/question/" + id, {
         method: "GET"
     }).then(function (response) {
         const data = response.data; // Hent data ud af response
-        console.log("data: ", data[0].name);
 
         d3.select('#option_0_button').text(data[0].name.split(",")[0]);
         d3.select('#option_1_button').text(data[1].name.split(",")[0]);
     })
 }
 
+//Tjekker om localAnswers eksisterer, parser til array og pusher option_chosen. Hvis localAnswers ikke eksisterer laves denne. 
 function update_answer(question_id, option_chosen) {
     if (localStorage.getItem('localAnswers') != null) {
         let local_answers = JSON.parse(localStorage.getItem('localAnswers'));
@@ -28,7 +29,7 @@ function update_answer(question_id, option_chosen) {
         let local_answers = [option_chosen];
         localStorage.setItem('localAnswers', JSON.stringify(local_answers));
     }
-
+    //POST question_id og option_chosen til API - SIDSTE POST SKAL ÆNDRES 
     d3.json(`/api/answer/${question_id}/${option_chosen}/${1}`, {
         method: "POST"
     })
