@@ -124,10 +124,10 @@ app.get('/api/result_level/:id', async (req, res) => {
   }
 })
 
-app.post('/api/answer/:question_id/:option_chosen/:user_id', async (req, res) => {
+app.post('/api/answer/:question_id/:option_chosen', async (req, res) => {
   try {
-    client.query(`INSERT INTO answer (question_id, option_chosen, user_id, datetime) 
-    VALUES (${req.params.question_id}, ${req.params.option_chosen}, ${req.params.user_id}, NOW())`);
+    client.query(`INSERT INTO answer (question_id, option_chosen, datetime) 
+    VALUES (${req.params.question_id}, ${req.params.option_chosen}, NOW())`);
     res.json({
       "ok": true,
     })
