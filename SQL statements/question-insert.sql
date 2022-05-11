@@ -1,6 +1,6 @@
 INSERT INTO "question" (option_0, option_1) VALUES
     (61, 49),
-    (320, 290),
+    (322, 286),
     (263, 265),
     (420, 393),
     (379, 387),
