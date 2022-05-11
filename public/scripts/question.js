@@ -30,7 +30,7 @@ function update_answer(question_id, option_chosen) {
         localStorage.setItem('localAnswers', JSON.stringify(local_answers));
     }
     //POST question_id og option_chosen til API - SIDSTE POST SKAL ÆNDRES 
-    d3.json(`/api/answer/${question_id}/${option_chosen}/${1}`, {
+    d3.json(`/api/answer/${question_id}/${option_chosen}`, {
         method: "POST"
     })
 }
