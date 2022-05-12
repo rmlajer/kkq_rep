@@ -25,7 +25,7 @@ app.get('/api/question/:id', async (req, res) => {
   console.log(req.params.id);
   try {
     let queryData = await client.query(
-      `SELECT food_id, name
+      `SELECT food_id, name, img_path
       FROM question
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id
       WHERE question_id=${req.params.id}`);
@@ -52,7 +52,8 @@ app.get('/api/questionbreakdown/:id', async (req, res) => {
       processing, 
       packaging, 
       transport, 
-      retail 
+      retail,
+      img_path
       FROM question
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id
       WHERE question_id=${req.params.id}`);
@@ -91,7 +92,8 @@ app.get('/api/result/:id', async (req, res) => {
       option_0,
       option_1,
       food_id,
-      co2e_per_kg
+      co2e_per_kg,
+      img_path
       FROM answer
       JOIN question ON answer.question_id=question.question_id
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id
