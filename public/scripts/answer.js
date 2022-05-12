@@ -46,7 +46,8 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
 
 
         const w = 500;
-        const h = 250;
+        const h = 300;
+        const multiplier = 300;
         const barPadding = 1; // Bruges til at lave afstand imellem søjler
 
         const svg = d3.select("#emission_breakdown")
@@ -68,13 +69,13 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
             .attr("y", function (d) {
                 // 'y' er position for søjlens øverste kant
                 // Husk, y-aksen vender på hovedet!
-                return h - (d *250);
+                return h - (d * multiplier);
             })
             // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
             .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler
             // Højden er datapunktet * 4. 
             .attr("height", function (d) {
-                return d * 250;
+                return d * multiplier;
             })
             // Alle søjler er farvet 'teal'
             .attr("fill", "teal");
