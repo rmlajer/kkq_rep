@@ -243,6 +243,7 @@ svg {
         max-width: 421px;
         margin-right: 20px;
         margin-bottom: 20px;
+        cursor: pointer;        
     }
     #option_1_button {
         display: block;
@@ -250,6 +251,7 @@ svg {
         width: 100%;
         max-width: 421px;
         margin-top: 20px;
+        cursor: pointer;        
     }
 
     #quiz_question_div {
