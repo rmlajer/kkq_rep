@@ -5,11 +5,11 @@ const port = process.env.PORT || 3000;
 
 
 const client = new Client({
-  /*user: "hkweungc",
+  user: "hkweungc",
   host: "abul.db.elephantsql.com",
   database: "hkweungc",
   password: "zYd8bb-9q4xP766x_0NGZhwEil0R1DuN",
-  port: 5432*/
+  port: 5432
 });
 
 client.connect();
