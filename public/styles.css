@@ -49,6 +49,8 @@ body {
     margin-right: 250px;
     color: #444444;
     min-width: 240px;
+    cursor: pointer;        
+
 }
 
 #option_0_button:hover {
@@ -67,6 +69,7 @@ body {
     font-size: 25px;
     color: #444444;
     min-width: 240px;
+    cursor: pointer;        
 }
 
 #option_1_button:hover {

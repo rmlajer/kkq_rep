@@ -3,13 +3,12 @@ const { Client } = require("pg");
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 const client = new Client({
-  user: "hkweungc",
-  host: "abul.db.elephantsql.com",
-  database: "hkweungc",
-  password: "zYd8bb-9q4xP766x_0NGZhwEil0R1DuN",
-  port: 5432
+  user: process.env.DB_USER || "hkweungc",
+  host: process.env.DB_HOST || "abul.db.elephantsql.com",
+  database: process.env.DB_DATABASE || "hkweungc",
+  password: process.env.DB_PASSWORD || "zYd8bb-9q4xP766x_0NGZhwEil0R1DuN",
+  port: process.env.DB_PORT || 5432
 });
 
 client.connect();
