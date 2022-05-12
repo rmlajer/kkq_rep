@@ -3,7 +3,7 @@ const { Client } = require("pg");
 const app = express();
 const port = process.env.PORT || 3000;
 
-
+/*
 const client = new Client({
   user: "hkweungc",
   host: "abul.db.elephantsql.com",
@@ -11,7 +11,7 @@ const client = new Client({
   password: "zYd8bb-9q4xP766x_0NGZhwEil0R1DuN",
   port: 5432
 });
-
+*/
 client.connect();
 
 app.use(express.text());
