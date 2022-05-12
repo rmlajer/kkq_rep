@@ -164,6 +164,7 @@ svg {
 
 #emission_breakdown {
     margin-top: 200px;
+    z-index: 1000;
 }
 
 #quiz_result_text {
