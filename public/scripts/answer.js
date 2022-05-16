@@ -30,7 +30,7 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
         let dataset = [];
 
         dataset.push(data.data[0].agriculture);
-        dataset.push(data.data[1].agriculture); 
+        dataset.push(data.data[1].agriculture);
         dataset.push(data.data[0].iluc);
         dataset.push(data.data[1].iluc);
         dataset.push(data.data[0].processing);
@@ -41,44 +41,62 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
         dataset.push(data.data[1].transport);
         dataset.push(data.data[0].retail);
         dataset.push(data.data[1].retail);
-        
+
         console.log(dataset);
 
 
-        const w = 500;
-        const h = 300;
-        const multiplier = 300;
-        const barPadding = 1; // Bruges til at lave afstand imellem søjler
+
+
+        const barPadding = 1;
+
 
         const svg = d3.select("#emission_breakdown")
             .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+            .attr("width", "100%")
+            .attr("height", "30vh");
 
-        // Lave barchart (søjlediagram)
+        maxX = d3.max(dataset, function (d) {
+            return parseFloat(d);
+        });
+
+        minX = d3.min(dataset, function (d) {
+            return parseFloat(d);
+        });
+
+
+        var scale = d3.scaleLinear()
+            .domain([minX, maxX])
+            .range([0, 100]);
+
+
         svg.selectAll("rect")
             .data(dataset)
             .enter()
             .append("rect")
-            // 'd' er datapunktet
-            // 'i' er index i datasættet
             .attr("x", function (d, i) {
-                // Søjlerne spredes jævnt ud over 'w'
-                return i * (w / dataset.length);
+                return (i % 2 == 0 || i==12) ? (i * 100 / dataset.length) + "%" : (i * 100 / dataset.length - barPadding) + "%" ;
             })
             .attr("y", function (d) {
-                // 'y' er position for søjlens øverste kant
-                // Husk, y-aksen vender på hovedet!
-                return h - (d * multiplier);
+
+                return (100 - scale(0) - scale(d)) + "%";
             })
-            // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
-            .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler
-            // Højden er datapunktet * 4. 
+            .attr("width", (100 / dataset.length - barPadding) + "%")
             .attr("height", function (d) {
-                return d * multiplier;
+                console.log(d + " " + scale(d) + "%");
+                return (scale((d < 0) ? -d : d)) + "%";
             })
-            // Alle søjler er farvet 'teal'
-            .attr("fill", "teal");
+            .attr("fill", function (d, i) {
+                console.log(i);
+                return (i % 2 == 0) ? "#f98a2f" : "#69a3b2";
+            });
+
+        svg.append("line")
+            .attr("x1", "0%")
+            .attr("x2", "100%")
+            .attr("y1", (100 - scale(0)) + "%")
+            .attr("y2", (100 - scale(0)) + "%")
+            .attr("stroke", "#444444")
+            .attr("stroke-width", 3)
 
 
 

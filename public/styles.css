@@ -166,7 +166,10 @@ svg {
 
 #emission_breakdown {
     margin-top: 100px;
+    width: 50%;
+    margin-left: 25%;
     z-index: 1000;
+    /*Height defined in answer.js*/
 }
 
 #quiz_result_text {

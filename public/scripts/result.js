@@ -47,7 +47,7 @@ function page_load() {
           .style("width", "35px")
           .style("height", "35px");
         d3.select("#result_" + i)
-          .style("opacity", "50%");
+          .style("opacity", "60%");
       }
       d3.select("#result_" + i).append("img")
         .attr("src", `images/icon_${i}_0.png`)
@@ -78,14 +78,14 @@ function page_load() {
         .attr('y', 0)
         .attr('width', "100%")
         .attr('height', 35)
-        .attr('fill', '#69a3b2');
+        .attr('fill', '#90da50');
 
       svg.append('rect')
         .attr('x', scale(correctAnswerCount) + "%")
         .attr('y', 0)
         .attr('width', scale(incorrectAnswerCount) + "%")
         .attr('height', 35)
-        .attr('fill', '#f98a2f');
+        .attr('fill', '#999999');
 
 
       // Lav SVG-elementet
