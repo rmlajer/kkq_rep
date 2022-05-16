@@ -20,13 +20,11 @@ function next_button_click() {
     }
 }
 
-
 fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
     .then(response => response.json())
     .then(data => {
 
-        console.log(data)
-
+        const barPadding = 2;
         let dataset = [];
 
         dataset.push(data.data[0].agriculture);
@@ -44,12 +42,6 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
 
         console.log(dataset);
 
-
-
-
-        const barPadding = 1;
-
-
         const svg = d3.select("#emission_breakdown")
             .append("svg")
             .attr("width", "100%")
@@ -60,33 +52,34 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
         });
 
         minX = d3.min(dataset, function (d) {
-            return parseFloat(d);
+            if (parseFloat(d) <= 0) {
+                return parseFloat(d);
+            }
+            else {
+                return 0;
+            }
         });
-
 
         var scale = d3.scaleLinear()
             .domain([minX, maxX])
             .range([0, 100]);
-
 
         svg.selectAll("rect")
             .data(dataset)
             .enter()
             .append("rect")
             .attr("x", function (d, i) {
-                return (i % 2 == 0 || i==12) ? (i * 100 / dataset.length) + "%" : (i * 100 / dataset.length - barPadding) + "%" ;
+                return ((100 - 5 * barPadding) / dataset.length * i + Math.floor(i/2) * barPadding) + "%";
             })
             .attr("y", function (d) {
 
                 return (100 - scale(0) - scale(d)) + "%";
             })
-            .attr("width", (100 / dataset.length - barPadding) + "%")
+            .attr("width", ((100 - 5 * barPadding) / dataset.length) + "%")
             .attr("height", function (d) {
-                console.log(d + " " + scale(d) + "%");
                 return (scale((d < 0) ? -d : d)) + "%";
             })
             .attr("fill", function (d, i) {
-                console.log(i);
                 return (i % 2 == 0) ? "#f98a2f" : "#69a3b2";
             });
 
@@ -97,8 +90,4 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
             .attr("y2", (100 - scale(0)) + "%")
             .attr("stroke", "#444444")
             .attr("stroke-width", 3)
-
-
-
-
     });
