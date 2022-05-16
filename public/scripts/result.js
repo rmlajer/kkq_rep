@@ -1,132 +1,90 @@
 function page_load() {
-  console.log("creating svg..");
-  //d3.select("#result_comparison_container").append("div").attr("id", "result_" + 1);
+    let localAnswers = JSON.parse(localStorage.getItem('localAnswers'));
+    console.log(localAnswers);
+    for (let i = 1; i <= 10; i++) {
 
-  let localAnswers = JSON.parse(localStorage.getItem('localAnswers'));
-  console.log(localAnswers);
-  for (let i = 1; i <= 10; i++) {
+        d3.json("/api/result/" + i, {
+            method: "GET"
+        }).then(function (data) {
 
-    d3.json("/api/result/" + i, {
-      method: "GET"
-    }).then(function (data) {
+            let correctAnswer;
+            let totalAnswerCount;
+            let correctAnswerCount = 0;
 
-      let correctAnswer;
-      let incorrectAnswerCount;
-      let correctAnswerCount = 0;
+            if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
+                correctAnswer = 0;
+            } else {
+                correctAnswer = 1;
+            }
 
+            for (let j = 0; j < data.data.length; j += 2) {
+                if (data.data[j].option_chosen == correctAnswer) {
+                    correctAnswerCount++;
 
-      if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
-        correctAnswer = 0;
-      } else {
-        correctAnswer = 1;
-      }
+                }
+            }
+            totalAnswerCount = data.data.length;
 
-      for (let j = 0; j < data.data.length; j += 2) {
-        if (data.data[j].option_chosen == correctAnswer) {
-          correctAnswerCount++;
-
-        }
-      }
-      incorrectAnswerCount = data.data.length / 2 - correctAnswerCount;
-      console.log('Correct: ' + correctAnswerCount);
-      console.log('Incorrect: ' + incorrectAnswerCount)
+            var scale = d3.scaleLinear()
+                .domain([0, totalAnswerCount])
+                .range([0, 100]);
 
 
-      d3.select("#result_comparison_container").append("div")
-        .attr("id", "result_" + i);
+            console.log('Correct: ' + correctAnswerCount);
+            console.log('Incorrect: ' + totalAnswerCount)
 
-      if (correctAnswer == parseInt(localAnswers[i - 1])) {
-        d3.select("#result_" + i).append("img")
-          .attr("src", "images/checkmark.png")
-          .style("width", "35px")
-          .style("height", "35px");
-      }
-      else {
-        d3.select("#result_" + i).append("img")
-          .attr("src", "images/empty_square.png")
-          .style("width", "35px")
-          .style("height", "35px");
-        d3.select("#result_" + i)
-          .style("opacity", "60%");
-      }
-      d3.select("#result_" + i).append("img")
-        .attr("src", `images/icon_${i}_0.png`)
-        .style("width", "35px")
-        .style("height", "35px");
+            d3.select("#result_comparison_container").append("div")
+                .attr("id", "result_" + i + "_container")
+                .attr("class", "indiv_result_container");
 
-      const svg = d3.select("#result_" + i).append("svg")
-        .attr("id", "svg_" + i)
-        .style("width", "calc(100% - 115px)")
-        .style("height", "35px")
-        .style("display", "inline");
+            d3.select("#result_" + i + "_container").append("div")
+                .attr("id", "result_" + i + "_checkmark_container")
+                .attr("class", "result_icon_container");
 
+            d3.select("#result_" + i + "_container").append("div")
+                .attr("id", "result_" + i + "_correct_icon_container")
+                .attr("class", "result_icon_container");
 
-      /* var scale = d3.scaleLinear()
-        .domain([0, correctAnswerCount + incorrectAnswerCount])
-        .range([0, d3.select("#svg_" + i)
-          .node().getBoundingClientRect().width]);
-      */
+            d3.select("#result_" + i + "_container").append("div")
+                .attr("id", "result_" + i + "_svg_container")
+                .attr("class", "result_svg_container");
 
-      var scale = d3.scaleLinear()
-        .domain([0, correctAnswerCount + incorrectAnswerCount])
-        .range([0, 100]);
+            d3.select("#result_" + i + "_container").append("div")
+                .attr("id", "result_" + i + "_incorrect_icon_container")
+                .attr("class", "result_icon_container");
 
+            const svg = d3.select("#result_" + i + "_svg_container").append("svg")
+                .attr("id", "svg_" + i);
 
+            if (correctAnswer == parseInt(localAnswers[i - 1])) {
+                d3.select("#result_" + i + "_checkmark_container").append("img")
+                    .attr("src", "images/checkmark.png");
+            }
+            else {
+                d3.select("#result_" + i + "_container")
+                    .style("opacity", "50%");
+            }
 
-      svg.append('rect')
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('width', "100%")
-        .attr('height', 35)
-        .attr('fill', '#90da50');
+            d3.select("#result_" + i + "_correct_icon_container").append("img")
+                .attr("src", `images/icon_${i}_${correctAnswer}.png`);
 
-      svg.append('rect')
-        .attr('x', scale(correctAnswerCount) + "%")
-        .attr('y', 0)
-        .attr('width', scale(incorrectAnswerCount) + "%")
-        .attr('height', 35)
-        .attr('fill', '#999999');
+            d3.select("#result_" + i + "_incorrect_icon_container").append("img")
+                .attr("src", `images/icon_${i}_${1 - correctAnswer}.png`);
 
+            svg.append('rect')
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('width', "100%")
+                .attr('height', 35)
+                .attr('fill', '#44444422    ');
 
-      // Lav SVG-elementet
-      /*const svg = d3.select("body")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-        
-  
-      // Lave barchart (søjlediagram)
-      svg.selectAll("rect")
-        .data(dataset)
-        .enter()
-        .append("rect")
-        // 'd' er datapunktet
-        // 'i' er index i datasættet
-        .attr("x", function (d, i) {
-          // Søjlerne spredes jævnt ud over 'w'
-          return i * (w / dataset.length);
+            svg.append('rect')
+                .attr('x', 0)
+                .attr('y', 0)
+                .attr('width', scale(correctAnswerCount) + "%")
+                .attr('height', 35)
+                .attr('fill', '#90DA50');
+
         })
-        .attr("y", function (d) {
-          // 'y' er position for søjlens øverste kant
-          // Husk, y-aksen vender på hovedet!
-          return h - (d / 5);
-        })
-        // Bredden er fast - og afhænger af 'w' og antallet af datapunkter
-        .attr("width", w / dataset.length - barPadding) // Padding skaber luft imellem søjler
-        // Højden er datapunktet * 4. 
-        .attr("height", function (d) {
-          return d * 4;
-        })
-        // Alle søjler er farvet 'teal'
-        .attr("fill", "teal");
-  
-  */
-
-
-      d3.select("#result_" + i).append("img")
-        .attr("src", `images/icon_${i}_1.png`)
-        .style("width", "35px")
-        .style("height", "35px");
-    })
-  }
+    }
 }
