@@ -92,7 +92,6 @@ body {
 svg {
     display: block;
     margin: auto;
-    border: solid;
 }
 
 #quiz_question_div {

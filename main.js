@@ -90,13 +90,14 @@ app.get('/api/result/:id', async (req, res) => {
       question.question_id,
       option_0,
       option_1,
+      option_chosen,
       food_id,
       co2e_per_kg,
       img_path
       FROM answer
       JOIN question ON answer.question_id=question.question_id
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id
-      WHERE answer_id = ${req.params.id}`);
+      WHERE question.question_id = ${req.params.id}`);
     res.json({
       "ok": true,
       "data": queryData.rows,

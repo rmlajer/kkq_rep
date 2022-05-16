@@ -1,35 +1,92 @@
 function page_load() {
-    console.log("creating svg..");
-    //d3.select("#result_comparison_container").append("div").attr("id", "result_" + 1);
+  console.log("creating svg..");
+  //d3.select("#result_comparison_container").append("div").attr("id", "result_" + 1);
 
-    for (let i = 1; i <= 10; i++) {
-        d3.select("#result_comparison_container").append("div")
-            .attr("id", "result_" + i);
+  let localAnswers = JSON.parse(localStorage.getItem('localAnswers'));
+  console.log(localAnswers);
+  for (let i = 1; i <= 10; i++) {
 
+    d3.json("/api/result/" + i, {
+      method: "GET"
+    }).then(function (data) {
+
+      let correctAnswer;
+      let incorrectAnswerCount;
+      let correctAnswerCount = 0;
+
+
+      if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
+        correctAnswer = 0;
+      } else {
+        correctAnswer = 1;
+      }
+
+      for (let j = 0; j < data.data.length; j += 2) {
+        if (data.data[j].option_chosen == correctAnswer) {
+          correctAnswerCount++;
+
+        }
+      }
+      incorrectAnswerCount = data.data.length / 2 - correctAnswerCount;
+      console.log('Correct: ' + correctAnswerCount);
+      console.log('Incorrect: ' + incorrectAnswerCount)
+
+
+      d3.select("#result_comparison_container").append("div")
+        .attr("id", "result_" + i);
+
+      if (correctAnswer == parseInt(localAnswers[i - 1])) {
         d3.select("#result_" + i).append("img")
-            .attr("src", "images/information-button.png")
-            .style("width", "35px")
-            .style("height", "35px");
+          .attr("src", "images/checkmark.png")
+          .style("width", "35px")
+          .style("height", "35px");
+      }
+      else {
         d3.select("#result_" + i).append("img")
-            .attr("src", `images/icon_${i}_0.png`)
-            .style("width", "35px")
-            .style("height", "35px");
+          .attr("src", "images/empty_square.png")
+          .style("width", "35px")
+          .style("height", "35px");
+        d3.select("#result_" + i)
+          .style("opacity", "50%");
+      }
+      d3.select("#result_" + i).append("img")
+        .attr("src", `images/icon_${i}_0.png`)
+        .style("width", "35px")
+        .style("height", "35px");
+
+      const svg = d3.select("#result_" + i).append("svg")
+        .attr("id", "svg_" + i)
+        .style("width", "calc(100% - 115px)")
+        .style("height", "35px")
+        .style("display", "inline");
+
+
+      /* var scale = d3.scaleLinear()
+        .domain([0, correctAnswerCount + incorrectAnswerCount])
+        .range([0, d3.select("#svg_" + i)
+          .node().getBoundingClientRect().width]);
+      */
+
+      var scale = d3.scaleLinear()
+        .domain([0, correctAnswerCount + incorrectAnswerCount])
+        .range([0, 100]);
 
 
 
-        const svg = d3.select("#result_" + i).append("svg")
-            .attr("id", "svg_" + i)
-            .style("width", "calc(100% - 110px)")
-            .style("height", "35px")
-            .style("display", "inline");
-        
-        svg.append('rect')
-            .attr('x', 10)
-            .attr('y', 10)
-            .attr('width', 100)
-            .attr('height', 20)
-            .attr('stroke', 'black')
-            .attr('fill', '#69a3b2');
+      svg.append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', "100%")
+        .attr('height', 35)
+        .attr('fill', '#69a3b2');
+
+      svg.append('rect')
+        .attr('x', scale(correctAnswerCount) + "%")
+        .attr('y', 0)
+        .attr('width', scale(incorrectAnswerCount) + "%")
+        .attr('height', 35)
+        .attr('fill', '#f98a2f');
+
 
       // Lav SVG-elementet
       /*const svg = d3.select("body")
@@ -37,7 +94,7 @@ function page_load() {
         .attr("width", w)
         .attr("height", h);
         
-
+  
       // Lave barchart (søjlediagram)
       svg.selectAll("rect")
         .data(dataset)
@@ -62,13 +119,14 @@ function page_load() {
         })
         // Alle søjler er farvet 'teal'
         .attr("fill", "teal");
+  
+  */
 
-*/
 
-
-        d3.select("#result_" + i).append("img")
-            .attr("src", `images/icon_${i}_1.png`)
-            .style("width", "35px")
-            .style("height", "35px");
-    }
+      d3.select("#result_" + i).append("img")
+        .attr("src", `images/icon_${i}_1.png`)
+        .style("width", "35px")
+        .style("height", "35px");
+    })
+  }
 }
