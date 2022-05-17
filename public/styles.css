@@ -162,6 +162,7 @@ svg {
     font-size: 25px;
     margin-right: 100px;
     color: #444444;
+    min-width: 240px;
 
 }
 
@@ -173,6 +174,7 @@ svg {
     font-weight: bold;
     font-size: 25px;
     color: #444444;
+    min-width: 240px;
 
 }
 
