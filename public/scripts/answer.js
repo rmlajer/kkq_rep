@@ -21,6 +21,30 @@ function next_button_click() {
     }
 }
 
+d3.json("/api/result/" + JSON.parse(localStorage.getItem("localQuestionId")), {
+    method: "GET"
+}).then(function (data) {
+
+    let currentQuestion = localStorage.getItem("localQuestionId");
+    let correctAnswer;
+    let answers = JSON.parse(localStorage.getItem('localAnswers'));
+
+    if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
+        correctAnswer = 0;
+    } else {
+        correctAnswer = 1;
+    }
+    console.log("Current question: " + currentQuestion);
+    console.log("Answers: " + answers[currentQuestion - 1]);
+
+    if (answers[currentQuestion - 1] == correctAnswer){
+        console.log(answers[currentQuestion - 1]);
+        d3.select('#quiz_answer').text("Du svarede rigtigt!");
+    } else {
+        d3.select('#quiz_answer').text("Du svarede forkert!");
+    }
+})
+
 function get_question(id) {
     d3.json("/api/question/" + id, {
         method: "GET"
