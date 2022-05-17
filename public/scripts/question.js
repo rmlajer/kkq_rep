@@ -14,10 +14,10 @@ function get_question(id) {
         const data = response.data; // Hent data ud af response
 
 
-        d3.select('#option_0_button').text(data[0].name.split(",")[0])
+        d3.select('#option_button_0').text(data[0].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_0.png`);
-        d3.select('#option_1_button').text(data[1].name.split(",")[0])
+        d3.select('#option_button_1').text(data[1].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_1.png`);
 
