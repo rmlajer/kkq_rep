@@ -54,7 +54,7 @@ body {
 
 #option_0_button {
     background-color: #f98a2f;
-    padding: 35px 50px 35px 50px;
+    padding: 20px 30px 20px 30px;
     border-radius: 10px;
     border-width: 0px;
     font-weight: bold;
@@ -62,7 +62,7 @@ body {
     margin-right: 250px;
     color: #444444;
     min-width: 240px;
-    cursor: pointer;        
+    cursor: pointer;
 
 }
 
@@ -75,14 +75,14 @@ body {
 
 #option_1_button {
     background-color: #65c6e3;
-    padding: 35px 50px 35px 50px;
+    padding: 20px 30px 20px 30px;
     border-radius: 10px;
     border-width: 0px;
     font-weight: bold;
     font-size: 25px;
     color: #444444;
     min-width: 240px;
-    cursor: pointer;        
+    cursor: pointer;
 }
 
 #option_1_button:hover {
@@ -92,13 +92,26 @@ body {
     -ms-transform: transform 0.1s ease-in-out;
 }
 
+#option_0_button img {
+    display: block;
+    width: 60px;
+    margin: auto;
+    margin-top: 10px;
+}
 
-#quiz_answer1 img {
+#option_1_button img {
+    display: block;
+    width: 60px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#quiz_answer_0 img {
     display: block;
 }
 
 
-#quiz_answer2 img {
+#quiz_answer_1 img {
     display: block;
 }
 
@@ -134,7 +147,7 @@ svg {
 
 /* ANSWER.HTML STYLING */
 
-#quiz_answer1 {
+#quiz_answer_0 {
     background-color: #f98a2f;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -143,10 +156,10 @@ svg {
     font-size: 25px;
     margin-right: 100px;
     color: #444444;
-    
+
 }
 
-#quiz_answer2 {
+#quiz_answer_1 {
     background-color: #65c6e3;
     padding: 35px 50px 35px 50px;
     border-radius: 10px;
@@ -154,7 +167,7 @@ svg {
     font-weight: bold;
     font-size: 25px;
     color: #444444;
-    
+
 }
 
 #quiz_answer {
@@ -172,6 +185,7 @@ svg {
     /*Height defined in answer.js*/
 }
 
+
 #quiz_result_text {
     text-align: center;
 }
@@ -181,9 +195,10 @@ svg {
     bottom: 40px;
     right: 40px;
     border: 0;
-    background: transparent; 
-    cursor: pointer;        
+    background: transparent;
+    cursor: pointer;
 }
+
 #next_button:hover {
     transform: scale(1.05);
     -webkit-transform: transform 0.1s ease-in-out;
@@ -197,22 +212,27 @@ svg {
     padding: 3%;
 }
 
-#result_comparison_container > div {
+#result_comparison_container>div {
     margin-bottom: 3%;
 }
-.indiv_result_container > div {
+
+.indiv_result_container>div {
     padding: 0 2% 0 2%;
-} 
+}
+
 .result_icon_container {
     width: 35px;
     height: 35px;
     display: inline-block;
 }
-.result_icon_container > img, svg {
+
+.result_icon_container>img,
+svg {
     width: 100%;
     height: 100%;
 
 }
+
 .result_svg_container {
     width: calc(84% - 3 * 35px);
     height: 35px;
@@ -225,31 +245,35 @@ svg {
     display: table;
     clear: both;
 }
+
 @media only screen and (max-width: 500px) {
     #page_title {
         font-size: 22px;
         text-align: left;
         margin-left: 5px;
-                  
+
     }
+
     #page_head {
         height: 27px;
 
     }
+
     #info_button {
 
         margin-top: -30px;
     }
-    
-}    
+
+}
+
 @media only screen and (max-width: 793px) {
-    
+
     #page_content {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
+
     #option_0_button {
         display: block;
         align-items: center;
@@ -258,6 +282,7 @@ svg {
         margin-right: 20px;
         margin-bottom: 20px;
     }
+
     #option_1_button {
         display: block;
         align-items: center;
@@ -274,5 +299,13 @@ svg {
         float: left;
         width: 94%;
         padding: 3%;
+    }
+
+    #emission_breakdown {
+        margin-top: 100px;
+        width: 90%;
+        margin-left: 5%;
+        z-index: 1000;
+        /*Height defined in answer.js*/
     }
 }
