@@ -27,8 +27,12 @@ function get_question(id) {
     }).then(function (response) {
         const data = response.data; // Hent data ud af response
 
-        d3.select('#quiz_answer_0').text(data[0].name.split(",")[0]);
-        d3.select('#quiz_answer_1').text(data[1].name.split(",")[0]);
+        d3.select('#quiz_answer_0').text(data[0].name.split(",")[0])
+            .append("img")
+            .attr("src", `images/icon_${id}_0.png`);
+        d3.select('#quiz_answer_1').text(data[1].name.split(",")[0])
+            .append("img")
+            .attr("src", `images/icon_${id}_1.png`);
     })
 }
 
@@ -116,8 +120,8 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
             .data(textData)
             .enter()
             .append("text")
-            .attr("x", function(d, i){
-                return ((100/textData.length + 0.15*barPadding) * i) + barPadding + "%";
+            .attr("x", function (d, i) {
+                return ((100 / textData.length + 0.15 * barPadding) * i) + barPadding + "%";
             })
             .attr("y", "2vh")
             .attr("fill", "black")

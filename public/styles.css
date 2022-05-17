@@ -94,25 +94,31 @@ body {
 
 #option_0_button img {
     display: block;
-    width: 60px;
+    height: 60px;
     margin: auto;
     margin-top: 10px;
 }
 
 #option_1_button img {
     display: block;
-    width: 60px;
+    height: 60px;
     margin: auto;
     margin-top: 10px;
 }
 
 #quiz_answer_0 img {
     display: block;
+    height: 60px;
+    margin: auto;
+    margin-top: 10px;
 }
 
 
 #quiz_answer_1 img {
     display: block;
+    height: 60px;
+    margin: auto;
+    margin-top: 10px;
 }
 
 svg {
