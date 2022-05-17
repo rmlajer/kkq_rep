@@ -8,7 +8,7 @@ UPDATE food
 
 UPDATE food
     SET img_path = '/images/Icon_2_0.png'
-    WHERE food_id = 322;
+    WHERE food_id = 332;
 
 UPDATE food
     SET img_path = '/images/Icon_2_1.png'
