@@ -21,6 +21,7 @@ function next_button_click() {
     }
 }
 
+//Checks correct answer against chosen answer and fills title accordingly
 d3.json("/api/result/" + JSON.parse(localStorage.getItem("localQuestionId")), {
     method: "GET"
 }).then(function (data) {
@@ -34,10 +35,8 @@ d3.json("/api/result/" + JSON.parse(localStorage.getItem("localQuestionId")), {
     } else {
         correctAnswer = 1;
     }
-    console.log("Current question: " + currentQuestion);
-    console.log("Answers: " + answers[currentQuestion - 1]);
 
-    if (answers[currentQuestion - 1] == correctAnswer){
+    if (answers[currentQuestion - 1] == correctAnswer) {
         console.log(answers[currentQuestion - 1]);
         d3.select('#quiz_answer').text("Du svarede rigtigt!");
     } else {

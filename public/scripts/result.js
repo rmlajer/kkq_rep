@@ -23,7 +23,7 @@ function page_load() {
 
                 }
             }
-            totalAnswerCount = data.data.length;
+            totalAnswerCount = data.data.length/2;
 
             var scale = d3.scaleLinear()
                 .domain([0, totalAnswerCount])
