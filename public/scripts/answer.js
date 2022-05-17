@@ -1,5 +1,6 @@
 function page_load() {
     check_question_id();
+    get_question(localStorage.getItem('localQuestionId'));
 }
 
 //Counts question in localStorage
@@ -20,12 +21,26 @@ function next_button_click() {
     }
 }
 
+function get_question(id) {
+    d3.json("/api/question/" + id, {
+        method: "GET"
+    }).then(function (response) {
+        const data = response.data; // Hent data ud af response
+
+        d3.select('#quiz_answer_0').text(data[0].name.split(",")[0]);
+        d3.select('#quiz_answer_1').text(data[1].name.split(",")[0]);
+    })
+}
+
 fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
     .then(response => response.json())
     .then(data => {
 
         const barPadding = 2;
         let dataset = [];
+        let textData = ["Landbrug", "iLUC", "Forarbejdning", "Emballage", "Transport", "Detailhandel"];
+        let yOffset = 10;
+
 
         dataset.push(data.data[0].agriculture);
         dataset.push(data.data[1].agriculture);
@@ -69,7 +84,7 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
             .enter()
             .append("rect")
             .attr("x", function (d, i) {
-                return ((100 - 5 * barPadding) / dataset.length * i + Math.floor(i/2) * barPadding) + "%";
+                return ((100 - 5 * barPadding) / dataset.length * i + Math.floor(i / 2) * barPadding) + "%";
             })
             .attr("y", function (d) {
 
@@ -89,5 +104,25 @@ fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
             .attr("y1", (100 - scale(0)) + "%")
             .attr("y2", (100 - scale(0)) + "%")
             .attr("stroke", "#444444")
-            .attr("stroke-width", 3)
+            .attr("stroke-width", 3);
+
+
+        const textSvg = d3.select("#emission_breakdown")
+            .append("svg")
+            .attr("width", "100%")
+            .attr("height", "5vh");
+
+        textSvg.selectAll("text")
+            .data(textData)
+            .enter()
+            .append("text")
+            .attr("x", function(d, i){
+                return ((100/textData.length + 0.15*barPadding) * i) + barPadding + "%";
+            })
+            .attr("y", "2vh")
+            .attr("fill", "black")
+            .attr("font-family", "Verdana")
+            .text(function (d) {
+                return d;
+            })
     });
