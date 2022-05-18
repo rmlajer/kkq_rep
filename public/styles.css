@@ -75,8 +75,26 @@ svg {
     min-height: 100px;
 }
 
-#div_next_button {
+#div_question_next_button {
     visibility: hidden;
+    display: flex;
+    position: fixed;
+    width: 150px;
+    top: calc(50% - 150px);
+    height: 300px;
+    right: 0px;
+    border: 0;
+    align-items: center;
+    justify-content: left;
+    background: transparent;
+    cursor: pointer;
+}
+
+#div_question_next_button:hover {
+    transform: scale(1.10);
+    -webkit-transform: transform 0.1s ease-in-out;
+    -moz-transform: transform 0.1s ease-in-out;
+    -ms-transform: transform 0.1s ease-in-out;
 }
 
 
@@ -147,10 +165,10 @@ svg {
     left: calc(50% - 75px);
 }
 
-#progress{
+#progress {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #444444;
-    
+
 }
 
 /* ANSWER.HTML STYLING */
@@ -265,9 +283,9 @@ svg {
     width: 50px;
     max-height: 50px;
     margin-left: 25px;
-    
-    
-    
+
+
+
 }
 
 #div_next_button:hover {
@@ -283,20 +301,20 @@ svg {
     flex: 1;
     margin-right: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
+
 }
 
 #result_comparison_container {
-    flex: 1;   
+    flex: 1;
 }
 
 #result_comparison_header {
-    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 7.3px;
 }
 
 #result_comparison_subheader {
-    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 7.3px;
 }
 
@@ -336,7 +354,7 @@ svg {
 
 /* REFERENCES.HTML STYLING */
 
-#references_heading{
+#references_heading {
     text-align: center;
     font-size: 40px;
     font-family: Verdana;
@@ -431,7 +449,7 @@ svg {
         flex-direction: column;
     }
 
-    #content_container > * {
+    #content_container>* {
         margin-right: 0;
         margin-bottom: 2vh;
     }
@@ -446,6 +464,11 @@ svg {
 
     #quiz_question {
         margin-top: 2vh;
+    }
+
+    #div_question_next_button {
+        width: 100px;
+        right: 0px;
     }
 
     /* ANSWER.HTML MEDIA STYLING */
@@ -464,8 +487,9 @@ svg {
         min-width: 190px;
         margin-bottom: 0;
     }
-    #quiz_answer_0_checkmark > img,
-    #quiz_answer_1_checkmark > img {
+
+    #quiz_answer_0_checkmark>img,
+    #quiz_answer_1_checkmark>img {
         margin-left: 55px;
     }
 
@@ -473,12 +497,12 @@ svg {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
     }
-   
+
     #div_next_button {
         width: 100px;
         right: 0px;
     }
-    
+
     /* RESULT.HTML MEDIA STYLING*/
 
     .column {
@@ -512,7 +536,7 @@ svg {
     #quiz_answer_0 {
         margin-right: 1%;
     }
-    
+
     #div_next_button {
         width: 85px;
         right: 0px;
