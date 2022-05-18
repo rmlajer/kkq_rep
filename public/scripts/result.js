@@ -1,6 +1,9 @@
 function page_load() {
     let localAnswers = JSON.parse(localStorage.getItem('localAnswers'));
+    let userCorrectAnswerCount = 0;
     console.log(localAnswers);
+
+
     for (let i = 1; i <= 10; i++) {
 
         d3.json("/api/result/" + i, {
@@ -11,19 +14,38 @@ function page_load() {
             let totalAnswerCount;
             let correctAnswerCount = 0;
 
-            if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
+            if (parseFloat(data.data[0].co2e_per_kg) < parseFloat(data.data[1].co2e_per_kg)) {
                 correctAnswer = 0;
             } else {
                 correctAnswer = 1;
             }
 
+            if (localAnswers[i - 1] == correctAnswer) {
+                userCorrectAnswerCount++;
+                console.log(userCorrectAnswerCount);
+            }
+
+            if (i == 10) {
+
+                d3.json("/api/result_level/" + userCorrectAnswerCount, {
+                    method: "GET"
+                }).then(function (data) {
+                    console.log(data.data[0].description);
+                    d3.select('#result_level_counter').text(`Du fik ${data.data[0].level_id}/10 rigtige!`);
+                    d3.select('#result_level_title').text(`Dit level: ${data.data[0].title}`);
+                    d3.select('#result_level_image')
+                        .append("img")
+                        .attr("src", `${data.data[0].img_path}`);
+                    d3.select('#result_level_description').text(`${data.data[0].description}`);
+                });
+            }
+
             for (let j = 0; j < data.data.length; j += 2) {
                 if (data.data[j].option_chosen == correctAnswer) {
                     correctAnswerCount++;
-
                 }
             }
-            totalAnswerCount = data.data.length/2;
+            totalAnswerCount = data.data.length / 2;
 
             var scale = d3.scaleLinear()
                 .domain([0, totalAnswerCount])
@@ -31,7 +53,8 @@ function page_load() {
 
 
             console.log('Correct: ' + correctAnswerCount);
-            console.log('Incorrect: ' + totalAnswerCount)
+            console.log('Incorrect: ' + totalAnswerCount);
+
 
             d3.select("#result_comparison_container").append("div")
                 .attr("id", "result_" + i + "_container")
@@ -87,4 +110,6 @@ function page_load() {
 
         })
     }
+
+
 }
