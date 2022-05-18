@@ -82,33 +82,33 @@ function get_answer() {
             let textData = ["Landbrug", "iLUC", "Forarbejdning", "Emballage", "Transport", "Detailhandel"];
             let yOffset = 10;
 
-            dataset.push(data.data[0].agriculture);
-            dataset.push(data.data[1].agriculture);
-            dataset.push(data.data[0].iluc);
-            dataset.push(data.data[1].iluc);
-            dataset.push(data.data[0].processing);
-            dataset.push(data.data[1].processing);
-            dataset.push(data.data[0].packaging);
-            dataset.push(data.data[1].packaging);
-            dataset.push(data.data[0].transport);
-            dataset.push(data.data[1].transport);
-            dataset.push(data.data[0].retail);
-            dataset.push(data.data[1].retail);
+            dataset.push(parseFloat(data.data[0].agriculture));
+            dataset.push(parseFloat(data.data[1].agriculture));
+            dataset.push(parseFloat(data.data[0].iluc));
+            dataset.push(parseFloat(data.data[1].iluc));
+            dataset.push(parseFloat(data.data[0].processing));
+            dataset.push(parseFloat(data.data[1].processing));
+            dataset.push(parseFloat(data.data[0].packaging));
+            dataset.push(parseFloat(data.data[1].packaging));
+            dataset.push(parseFloat(data.data[0].transport));
+            dataset.push(parseFloat(data.data[1].transport));
+            dataset.push(parseFloat(data.data[0].retail));
+            dataset.push(parseFloat(data.data[1].retail));
 
             console.log(dataset);
 
             const svg = d3.select("#emission_breakdown")
                 .append("svg")
                 .attr("width", "100%")
-                .attr("height", "30vh");
+                .attr("height", "500px");
 
             maxX = d3.max(dataset, function (d) {
-                return parseFloat(d);
+                return d;
             });
 
             minX = d3.min(dataset, function (d) {
-                if (parseFloat(d) <= 0) {
-                    return parseFloat(d);
+                if (d <= 0) {
+                    return d;
                 }
                 else {
                     return 0;
@@ -116,8 +116,9 @@ function get_answer() {
             });
 
             var scale = d3.scaleLinear()
-                .domain([minX, maxX])
+                .domain([minX, maxX/* - ((minX < 0) ? minX : 0)*/])
                 .range([0, 100]);
+                
 
             svg.selectAll("rect")
                 .data(dataset)
@@ -128,11 +129,12 @@ function get_answer() {
                 })
                 .attr("y", function (d) {
 
-                    return (100 - scale(0) - scale(d)) + "%";
+                    return (100 - scale(0) - scale((d < 0) ? d : d + minX)) + "%";
                 })
                 .attr("width", ((100 - 5 * barPadding) / dataset.length) + "%")
                 .attr("height", function (d) {
-                    return (scale((d < 0) ? -d : d)) + "%";
+                    //console.log("d: " + d + " -  scale: " + scale(d + minX));
+                    return (scale((d < 0) ? -d + minX : d + minX)) + "%";
                 })
                 .attr("fill", function (d, i) {
                     return (i % 2 == 0) ? "#f98a2f" : "#69a3b2";
@@ -144,7 +146,7 @@ function get_answer() {
                 .attr("y1", (100 - scale(0)) + "%")
                 .attr("y2", (100 - scale(0)) + "%")
                 .attr("stroke", "#444444")
-                .attr("stroke-width", 3);
+                .attr("stroke-width", (minX<0) ? 1 : 2);
 
 
             const textSvg = d3.select("#emission_breakdown")
