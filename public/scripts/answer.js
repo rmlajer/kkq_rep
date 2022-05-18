@@ -150,7 +150,7 @@ function get_answer() {
             textData.forEach(emission_category => {
                 d3.select(`#${emission_category.toLowerCase()}_icon`)
                     .append("img")
-                    .attr("src", `images/Icon_${emission_category.toLowerCase()}.png`);
+                    .attr("src", `images/icon_${emission_category.toLowerCase()}.png`);
                 console.log(`#${emission_category.toLowerCase()}_icon`);
             });
         });
