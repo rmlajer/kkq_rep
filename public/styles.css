@@ -75,6 +75,12 @@ svg {
     min-height: 100px;
 }
 
+#div_next_button {
+    visibility: hidden;
+}
+
+
+
 #option_button_0 {
     flex: 1;
     background-color: #f98a2f;

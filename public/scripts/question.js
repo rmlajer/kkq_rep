@@ -18,11 +18,9 @@ function back_restriction() {
         d3.select('#option_button_0').style("background-color", "#888888");
         document.getElementById("option_button_1").disabled = true;
         d3.select('#option_button_1').style("background-color", "#888888");
+        document.getElementById('div_next_button').style.visibility = "visible";
     }
-    else{
-        document.getElementById('div_next_button').onclick = null;
-        document.getElementById('div_next_button').style.display = "none";
-    }
+    
 }
 
 //Henter svarmuligheder fra question database og appender disse til button text, fjerner alt efter første komma
