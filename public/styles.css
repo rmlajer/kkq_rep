@@ -185,7 +185,6 @@ svg {
 
 #quiz_answer_0 {
     flex: 1;
-    margin-right: 10%;
     background-color: #f98a2f;
     padding: 20px 25px 20px 25px;
     border-radius: 10px;
@@ -240,26 +239,39 @@ svg {
     margin: 0;
 }
 
+#quiz_answer_0_checkmark {
+    margin-right: 10%;
+    flex-direction: row-reverse;
+    padding-left: 40px;
+}
+
+#quiz_answer_1_checkmark {
+    padding-right: 40px;
+}
+
 #quiz_answer_0_checkmark,
 #quiz_answer_1_checkmark {
-    flex: 0;
-    min-width: 80px;
-    max-width: 80px;
+    display: flex;
+    flex: 1;
+    min-width: 190px;
+    max-width: 190px;
     min-height: 80px;
     max-height: 80px;
     border-radius: 10px;
     border-width: 0px;
-    background-color: none;
 }
 
 #quiz_answer_0_checkmark>img,
 #quiz_answer_1_checkmark>img {
-    width: 80px;
-    height: 80px;
+    flex: 0;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 #emission_breakdown {
     flex: 1;
+    height: 30vh;
     margin-top: 30px;
     padding: 0 15vw 0 15vw;
 }
@@ -276,22 +288,27 @@ svg {
     flex: 1;
     padding: 0 3vw 0 2vw;
 }
+
 #iluc_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
+
 #processing_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
+
 #packaging_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
+
 #transport_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
+
 #retail_icon {
     flex: 1;
     padding: 0 2vw 0 3vw;
@@ -454,33 +471,6 @@ svg {
     -ms-transform: transform 0.5s ease-in-out;
 }
 
-@media only screen and (max-width: 500px) {
-    #page_title {
-        font-size: 22px;
-        text-align: left;
-        margin-left: 5px;
-
-    }
-
-    #page_head {
-        height: 27px;
-
-    }
-
-    #info_button {
-
-        margin-top: -30px;
-    }
-
-    #om_kkq {
-        width: 100%;
-    }
-
-    #om_dskd {
-        width: 100%;
-    }
-}
-
 @media only screen and (max-width: 793px) {
 
     /* GENERAL MEDIA STYLING*/
@@ -523,25 +513,24 @@ svg {
 
     #quiz_answer_0_checkmark,
     #quiz_answer_1_checkmark {
-        max-width: 190px;
-        min-width: 190px;
-        margin-bottom: 0;
-    }
-
-    #quiz_answer_0_checkmark>img,
-    #quiz_answer_1_checkmark>img {
-        margin-left: 55px;
+        /*max-width: 190px;
+        min-width: 190px;*/
+        margin: 0 40px 10px 0;
+        padding: 0 0 0 40px;
+        flex-direction: row-reverse;
     }
 
     #emission_breakdown {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
+        margin-bottom: 0;
     }
 
     #emission_category_container {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
     }
+
     #div_next_button {
         width: 100px;
         right: 0px;
@@ -554,8 +543,6 @@ svg {
         width: 94%;
         padding: 3%;
     }
-
-
 }
 
 @media only screen and (max-width: 500px) {
@@ -576,13 +563,17 @@ svg {
     #quiz_answer {
         margin: 20px 5px 20px 5px;
     }
-
-    #quiz_answer_0 {
-        margin-right: 1%;
-    }
-
+    
     #div_next_button {
         width: 85px;
         right: 0px;
+    }
+
+    #om_kkq {
+        width: 100%;
+    }
+
+    #om_dskd {
+        width: 100%;
     }
 }

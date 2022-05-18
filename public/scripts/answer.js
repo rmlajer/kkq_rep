@@ -99,7 +99,7 @@ function get_answer() {
             const svg = d3.select("#emission_breakdown")
                 .append("svg")
                 .attr("width", "100%")
-                .attr("height", "500px");
+                .attr("height", "100%");
 
             maxX = d3.max(dataset, function (d) {
                 return d;
