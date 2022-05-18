@@ -225,17 +225,31 @@ svg {
     padding: 0 15vw 0 15vw;
 }
 
-#next_button {
+#div_next_button {
+    display: flex;
     position: fixed;
-    bottom: 40px;
+    width: 120px;
+    top: calc(50% - 250px);
+    height: 500px;
     right: 40px;
     border: 0;
+    align-items: center;
+    justify-content: center;
     background: transparent;
     cursor: pointer;
 }
 
-#next_button:hover {
-    transform: scale(1.05);
+#next_button {
+    display: block;
+    width: 50px;
+    max-height: 50px;
+    
+    
+    
+}
+
+#div_next_button:hover {
+    transform: scale(1.10);
     -webkit-transform: transform 0.1s ease-in-out;
     -moz-transform: transform 0.1s ease-in-out;
     -ms-transform: transform 0.1s ease-in-out;
