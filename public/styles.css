@@ -54,7 +54,7 @@ body {
 
 #content_container {
     display: flex;
-    align-items: center;
+    /*align-items: center; */
     justify-content: center;
 }
 
@@ -130,6 +130,21 @@ svg {
     height: 60px;
     margin: auto;
     margin-top: 10px;
+}
+
+#progress_container {
+    display: flex;
+    align-items: bottom;
+    justify-content: center;
+    position: relative;
+    width: 150px;
+    left: calc(50% - 75px);
+}
+
+#progress{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #444444;
+    
 }
 
 /* ANSWER.HTML STYLING */
@@ -260,10 +275,22 @@ svg {
 #result_level_container {
     flex: 1;
     margin-right: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
 #result_comparison_container {
-    flex: 1;
+    flex: 1;   
+}
+
+#result_comparison_header {
+    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 7.3px;
+}
+
+#result_comparison_subheader {
+    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 7.3px;
 }
 
 #result_comparison_container>div {

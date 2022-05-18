@@ -1,7 +1,9 @@
 function page_load() {
     if (localStorage.getItem('localQuestionId') == null) {
         localStorage.setItem('localQuestionId', 1);
+    
     }
+    d3.select('#progress').text(`${localStorage.getItem('localQuestionId')}/10`);
     check_question_id();
     get_question(localStorage.getItem('localQuestionId'));
 }
