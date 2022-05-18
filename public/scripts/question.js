@@ -1,11 +1,28 @@
 function page_load() {
     if (localStorage.getItem('localQuestionId') == null) {
         localStorage.setItem('localQuestionId', 1);
-    
     }
     d3.select('#progress').text(`${localStorage.getItem('localQuestionId')}/10`);
     check_question_id();
     get_question(localStorage.getItem('localQuestionId'));
+    back_restriction();
+    
+
+}
+
+function back_restriction() {
+    let local_answers = JSON.parse(localStorage.getItem('localAnswers'));
+    if (local_answers.length >= localStorage.getItem('localQuestionId')) {
+        console.log("Back restriction check")
+        document.getElementById("option_button_0").disabled = true;
+        d3.select('#option_button_0').style("background-color", "#888888");
+        document.getElementById("option_button_1").disabled = true;
+        d3.select('#option_button_1').style("background-color", "#888888");
+    }
+    else{
+        document.getElementById('div_next_button').onclick = null;
+        document.getElementById('div_next_button').style.display = "none";
+    }
 }
 
 //Henter svarmuligheder fra question database og appender disse til button text, fjerner alt efter første komma
@@ -23,9 +40,11 @@ function get_question(id) {
             .append("img")
             .attr("src", `images/icon_${id}_1.png`);
 
-        
+
     })
 }
+
+
 
 //Tjekker om localAnswers eksisterer, parser til array og pusher option_chosen. Hvis localAnswers ikke eksisterer laves denne. 
 function update_answer(question_id, option_chosen) {
@@ -47,4 +66,5 @@ function update_answer(question_id, option_chosen) {
 function option_button_click(value) {
     update_answer(localStorage.getItem('localQuestionId'), value);
     location.href = '/answer.html';
+    back_restriction();
 }

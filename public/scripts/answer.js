@@ -3,6 +3,7 @@ function page_load() {
     get_question(localStorage.getItem('localQuestionId'));
     get_answer();
     d3.select('#progress').text(`${localStorage.getItem('localQuestionId')}/10`);
+
 }
 
 //Counts question in localStorage
@@ -11,7 +12,6 @@ function update_question_id() {
     localStorage.setItem('localQuestionId', ++question_id);
 }
 
-//Controls button clicks, redirects to href value from button, after question 10 directs to result.
 function next_button_click() {
     let question_id = localStorage.getItem('localQuestionId');
     update_question_id();

@@ -110,6 +110,4 @@ function page_load() {
 
         })
     }
-
-
 }
