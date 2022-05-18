@@ -294,7 +294,7 @@ svg {
         flex-direction: column;
     }
 
-    #content_container>* {
+    #content_container > * {
         margin-right: 0;
         margin-bottom: 2vh;
     }

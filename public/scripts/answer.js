@@ -55,15 +55,13 @@ function get_answer() {
                 .append("img")
                 .attr("src", `images/icon_${currentQuestion}_1.png`);
 
-
-            if (data.data[0].co2e_per_kg < data.data[1].co2e_per_kg) {
+            if (parseFloat(data.data[0].co2e_per_kg) < parseFloat(data.data[1].co2e_per_kg)) {
                 correctAnswer = 0;
             } else {
                 correctAnswer = 1;
             }
 
             if (answers[currentQuestion - 1] == correctAnswer) {
-                console.log(answers[currentQuestion - 1]);
                 d3.select('#quiz_answer').text(`Du svarede rigtigt! ${data.data[correctAnswer].name.split(",")[0]} udleder MINDRE co2e end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
                 console.log(`#quiz_answer_${correctAnswer}_checkmark`);
                 d3.select(`#quiz_answer_${correctAnswer}_checkmark`)
@@ -71,7 +69,7 @@ function get_answer() {
                     .append("img")
                     .attr("src", "images/checkmark.png");
             } else {
-                d3.select('#quiz_answer').text(`Du svarede forkert! ${data.data[correctAnswer].name.split(",")[0]} udleder MERE co2e end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
+                d3.select('#quiz_answer').text(`Du svarede forkert! ${data.data[1 - correctAnswer].name.split(",")[0]} udleder MERE co2e end ${data.data[correctAnswer].name.split(",")[0]}.`);
                 console.log(`#quiz_answer_${1 - correctAnswer}_checkmark`);
                 d3.select(`#quiz_answer_${1 - correctAnswer}_checkmark`)
                     .style("background-color", "#444444")
