@@ -17,7 +17,7 @@ function back_restriction() {
         document.getElementById("option_button_0").disabled = true;
         d3.select('#option_button_0').style("background-color", "#888888");
         document.getElementById("option_button_1").disabled = true;
-        d3.select('#option_button_1').style("background-color", "#888888");
+        d3.select('#option_button_1').style("opacity", "50%");
         document.getElementById('div_next_button').style.visibility = "visible";
     }
     

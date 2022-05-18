@@ -28,8 +28,6 @@ function get_question(id) {
         method: "GET"
     }).then(function (response) {
         const data = response.data; // Hent data ud af response
-
-
     })
 }
 
@@ -80,7 +78,7 @@ function get_answer() {
 
             const barPadding = 2;
             let dataset = [];
-            let textData = ["Landbrug", "iLUC", "Forarbejdning", "Emballage", "Transport", "Detailhandel"];
+            let textData = ["agriculture", "iluc", "processing", "packaging", "transport", "retail"];
             let yOffset = 10;
 
             dataset.push(parseFloat(data.data[0].agriculture));
@@ -119,7 +117,7 @@ function get_answer() {
             var scale = d3.scaleLinear()
                 .domain([minX, maxX/* - ((minX < 0) ? minX : 0)*/])
                 .range([0, 100]);
-                
+
 
             svg.selectAll("rect")
                 .data(dataset)
@@ -147,26 +145,13 @@ function get_answer() {
                 .attr("y1", (100 - scale(0)) + "%")
                 .attr("y2", (100 - scale(0)) + "%")
                 .attr("stroke", "#444444")
-                .attr("stroke-width", (minX<0) ? 1 : 2);
+                .attr("stroke-width", (minX < 0) ? 1 : 2);
 
-
-            const textSvg = d3.select("#emission_breakdown")
-                .append("svg")
-                .attr("width", "100%")
-                .attr("height", "5vh");
-
-            textSvg.selectAll("text")
-                .data(textData)
-                .enter()
-                .append("text")
-                .attr("x", function (d, i) {
-                    return ((100 / textData.length + 0.15 * barPadding) * i) + barPadding + "%";
-                })
-                .attr("y", "2vh")
-                .attr("fill", "black")
-                .attr("font-family", "Verdana")
-                .text(function (d) {
-                    return d;
-                })
+            textData.forEach(emission_category => {
+                d3.select(`#${emission_category.toLowerCase()}_icon`)
+                    .append("img")
+                    .attr("src", `images/Icon_${emission_category.toLowerCase()}.png`);
+                console.log(`#${emission_category.toLowerCase()}_icon`);
+            });
         });
 }
