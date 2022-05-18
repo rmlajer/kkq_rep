@@ -228,13 +228,13 @@ svg {
 #div_next_button {
     display: flex;
     position: fixed;
-    width: 120px;
-    top: calc(50% - 250px);
-    height: 500px;
-    right: 40px;
+    width: 150px;
+    top: calc(50% - 150px);
+    height: 300px;
+    right: 0px;
     border: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     background: transparent;
     cursor: pointer;
 }
@@ -243,6 +243,7 @@ svg {
     display: block;
     width: 50px;
     max-height: 50px;
+    margin-left: 25px;
     
     
     
@@ -439,7 +440,12 @@ svg {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
     }
-
+   
+    #div_next_button {
+        width: 100px;
+        right: 0px;
+    }
+    
     /* RESULT.HTML MEDIA STYLING*/
 
     .column {
@@ -472,5 +478,10 @@ svg {
 
     #quiz_answer_0 {
         margin-right: 1%;
+    }
+    
+    #div_next_button {
+        width: 85px;
+        right: 0px;
     }
 }
