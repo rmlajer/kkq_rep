@@ -36,19 +36,14 @@ function get_question(id) {
     }).then(function (response) {
         const data = response.data; // Hent data ud af response
 
-
         d3.select('#option_button_0').text(data[0].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_0.png`);
         d3.select('#option_button_1').text(data[1].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_1.png`);
-
-
     })
 }
-
-
 
 //Tjekker om localAnswers eksisterer, parser til array og pusher option_chosen. Hvis localAnswers ikke eksisterer laves denne. 
 function update_answer(question_id, option_chosen) {
