@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>KlimaKostQuizzen by @taenkehattene</title>
+  <script src="scripts/d3.js"></script>
+  <script src="scripts/general.js"></script>
+  <script src="scripts/overview.js"></script>
+</head>
+
+<body onload="page_load()">
+
+  <!-- FIXED HEADER -->
+  <header id="page_head">
+    <div id="page_title">KlimaKostQuizzen</div>
+    <a href="references.html"><img id="info_button" src="images/information_button.png" /></a>
+  </header>
+
+  <!--The question page-->
+  <div id="page_content">
+    <div id="">
+      <h2 id="quiz_question">Hvilken fødevare har det mindste klimaaftryk? (CO2e/kg)</h2>
+    </div>
+
+    <div id="content_container">
+      <div id="overview_chart"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

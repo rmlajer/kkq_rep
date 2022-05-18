@@ -141,6 +141,23 @@ app.post('/api/answer/:question_id/:option_chosen', async (req, res) => {
   }
 })
 
+app.get('/api/overview', async (req, res) => {
+  try {
+    let queryData = await client.query(
+      `SELECT food_id, name, co2e_per_kg, energy FROM question
+      JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id`);
+    res.json({
+      "ok": true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    res.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
+})
+
 app.listen(port, () => {
   console.log(`listening to port: ${port}`);
 })
