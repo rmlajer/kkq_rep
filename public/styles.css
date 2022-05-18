@@ -75,6 +75,30 @@ svg {
     min-height: 100px;
 }
 
+#div_question_next_button {
+    visibility: hidden;
+    display: flex;
+    position: fixed;
+    width: 150px;
+    top: calc(50% - 150px);
+    height: 300px;
+    right: 0px;
+    border: 0;
+    align-items: center;
+    justify-content: left;
+    background: transparent;
+    cursor: pointer;
+}
+
+#div_question_next_button:hover {
+    transform: scale(1.10);
+    -webkit-transform: transform 0.1s ease-in-out;
+    -moz-transform: transform 0.1s ease-in-out;
+    -ms-transform: transform 0.1s ease-in-out;
+}
+
+
+
 #option_button_0 {
     flex: 1;
     background-color: #f98a2f;
@@ -130,6 +154,21 @@ svg {
     height: 60px;
     margin: auto;
     margin-top: 10px;
+}
+
+#progress_container {
+    display: flex;
+    align-items: bottom;
+    justify-content: center;
+    position: relative;
+    width: 150px;
+    left: calc(50% - 75px);
+}
+
+#progress {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #444444;
+
 }
 
 /* ANSWER.HTML STYLING */
@@ -302,10 +341,22 @@ svg {
 #result_level_container {
     flex: 1;
     margin-right: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 #result_comparison_container {
     flex: 1;
+}
+
+#result_comparison_header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 7.3px;
+}
+
+#result_comparison_subheader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 7.3px;
 }
 
 #result_comparison_container>div {
@@ -341,6 +392,95 @@ svg {
     clear: both;
 }
 
+/* REFERENCES.HTML STYLING */
+
+#references_heading {
+    text-align: center;
+    font-size: 40px;
+    font-family: Verdana;
+}
+
+
+#om_kkq {
+    float: left;
+    padding: 10px;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffffCC;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.377);
+    line-height: 1.3em;
+    width: 600px;
+}
+
+#om_dskd {
+    float: left;
+    padding: 10px;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffffCC;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.377);
+    line-height: 1.3em;
+    width: 600px;
+}
+
+
+#references_flex_container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.heading {
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+#dskd_link_button {
+    padding: 20px;
+    font-family: Verdana;
+    font-weight: bold;
+    background-color: #f98a2f;
+    border-width: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#dskd_link_button:hover {
+    transform: scale(1.05);
+    -webkit-transform: transform 0.5s ease-in-out;
+    -moz-transform: transform 0.5s ease-in-out;
+    -ms-transform: transform 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 500px) {
+    #page_title {
+        font-size: 22px;
+        text-align: left;
+        margin-left: 5px;
+
+    }
+
+    #page_head {
+        height: 27px;
+
+    }
+
+    #info_button {
+
+        margin-top: -30px;
+    }
+
+    #om_kkq {
+        width: 100%;
+    }
+
+    #om_dskd {
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 793px) {
 
     /* GENERAL MEDIA STYLING*/
@@ -364,6 +504,11 @@ svg {
 
     #quiz_question {
         margin-top: 2vh;
+    }
+
+    #div_question_next_button {
+        width: 100px;
+        right: 0px;
     }
 
     /* ANSWER.HTML MEDIA STYLING */
@@ -396,6 +541,10 @@ svg {
     #emission_category_container {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
+    }
+    #div_next_button {
+        width: 100px;
+        right: 0px;
     }
 
     /* RESULT.HTML MEDIA STYLING*/
@@ -430,5 +579,10 @@ svg {
 
     #quiz_answer_0 {
         margin-right: 1%;
+    }
+
+    #div_next_button {
+        width: 85px;
+        right: 0px;
     }
 }
