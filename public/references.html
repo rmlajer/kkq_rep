@@ -3,6 +3,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
   <title>KlimaKostQuizzen by @taenkehattene</title>
   <script src="scripts/d3.js"></script>
@@ -14,13 +15,53 @@
   <!-- FIXED HEADER -->
   <header id="page_head">
     <div id="page_title">KlimaKostQuizzen</div>
-    <a href="references.html"><img id="info_button" src="images/information-button.png"/></a>
+    <a href="references.html"><img id="info_button" src="images/information-button.png" /></a>
   </header>
 
-    <!--The references page-->
-    <div id="page_content">
-        <a href="https://denstoreklimadatabase.dk/">denstoreklimadatabase.dk</a>
+  <!--The references page-->
+  <div id="references_flex_container">
+    <div id="references_heading">
+      <h2>Hvad er det her for en hjemmeside?</h2>
     </div>
+    <div id="om_kkq">
+      <h2 class="heading">OM KLIMAKOSTQUIZZEN</h2>
+      <p>KlimaKostQuizzen giver dig mulighed for at teste, om du ved, hvor meget dine fødevarer faktisk forurener.
+        <br>
+        <br>
+        Der er nemlig rigtig mange måder, hvorpå du kan nedbringe dit CO2-aftryk, og en af de letteste er faktisk ved at
+        omlægge din kost.
+        Det kan dog være svært at finde hoved og hale i, hvilke fødevarer, der er mest klimavenlige, og derfor har vi
+        lavet en lille quiz,
+        så du kan blive klogere på de produkter, du putter i indkøbskurven.
+        På den måde kan du få en idé om, hvilke fødevarer, du med fordel kan spise mere af, hvis du gerne vil nedbringe
+        dit CO2-aftryk.
+        <br>
+        <br>
+        Vi - skaberne af KlimaKostQuizzen - er hverken ignorante klima-apatikere eller rabiate veganer-guruer, men alligevel synes
+        vi,
+        at det er interessant at finde ud af, hvilke fødevarer, vi faktisk burde spise mere af.
+
+      </p>
+    </div>
+    <div id="om_dskd">
+      <h2 class="heading">OM DENSTOREKLIMADATABASE</h2>
+      <p>Vi har fundet alt vores data til denne quiz på denstoreklimadatabase.dk, som udgives af Concito - Danmarks
+        grønne tænketank.
+        Concito skriver, at de med denstoreklimadatabase.dk <i>"med større præcision end nogensinde kan belyse
+          klimaeffekten af
+          vores fødevareforbrug og bidrage til at fremme mere klimavenlige madvaner"</i>. Dét er en dagsorden, som vi
+        rigtig gerne vil støtte op om,
+        og derfor har vi valgt at gøre brug af deres data for at kunne lave KlimaKostQuizzen.¨
+        <br>
+        <br>
+        Hvis du gerne vil lære mere om klimavenlige madvaner,
+        så brug knappen herunder for at komme videre til denstoreklimadatabase.dk.
+      </p>
+      <button id="dskd_link_button" onclick='window.location = "https://denstoreklimadatabase.dk"'>
+        denstoreklimadatabase.dk
+      </button>
+    </div>
+  </div>
 
 </body>
 
