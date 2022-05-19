@@ -65,8 +65,10 @@ svg {
 
 #tooltip {
     position: absolute;
-    width: 400px;
+    width: auto;
     height: auto;
+    max-width: 44vw;
+    min-width: 44vw;
     padding: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;

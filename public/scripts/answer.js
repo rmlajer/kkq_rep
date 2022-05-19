@@ -157,10 +157,19 @@ function get_answer() {
                         .attr("src", `images/icon_${emission_category.danish_category.toLowerCase()}.png`)
                         .on("mouseover", function (event) {
                             // Læs søjlens x og y position ud fra 'this'
-                            // Husk parseFloat for at lave text til number.
-                            const xPosition = event.clientX;
-                            const yPosition = event.clientY;
-                            console.log("x: " + xPosition + "y: " + yPosition);
+                            // Husk parseFloat for at lave text til number.'
+                            let iconElement = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect();
+                            let xPosition = 0;
+
+                            if (parseInt(emission_category.category_id) < 4) {
+                                xPosition = iconElement.x + iconElement.width;
+                            } else {
+                                xPosition = iconElement.x - (46 * window.innerWidth / 100);
+                            }
+
+
+                            let yPosition = document.getElementById("emission_breakdown").getBoundingClientRect().top;
+
 
                             d3.select("#tooltip")
                                 .style("left", xPosition + "px")
@@ -170,7 +179,7 @@ function get_answer() {
 
                             d3.select("#tooltip_answer_0")
                                 .text(`${data.data[0].name.split(",")[0]}: ${parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
-                            
+
                             d3.select("#tooltip_answer_1")
                                 .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
@@ -179,11 +188,19 @@ function get_answer() {
                                 .select("p")
                                 .text(`${emission_category.description}`);
 
+                            d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
+                                .style("transform", "scale(1.10)")
+                                .style("cursor", "pointer");
+
                             d3.select("#tooltip").classed("hidden", false);
                         })
                         .on("mouseout", function () {
                             // Gem tooltip til næste gang
                             d3.select("#tooltip").classed("hidden", true);
+
+                            d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
+                                .style("transform", "scale(1.0)")
+                                .style("cursor", "default");
                         });
 
                     //console.log(`#${emission_category.toLowerCase()}_icon`);
