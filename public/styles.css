@@ -608,13 +608,6 @@ svg {
 
     #quiz_answer_0_checkmark,
     #quiz_answer_1_checkmark {
-        max-width: 190px;
-        min-width: 190px;
-        margin-bottom: 0;
-    }
-
-    #quiz_answer_0_checkmark>img,
-    #quiz_answer_1_checkmark>img {
         margin-left: 55px;
         margin: 0 40px 10px 0;
         padding: 0 0 0 40px;
@@ -670,10 +663,6 @@ svg {
 
     #quiz_answer {
         margin: 20px 5px 20px 5px;
-    }
-
-    #quiz_answer_0 {
-        margin-right: 1%;
     }
 
     #div_next_button {
