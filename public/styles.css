@@ -70,9 +70,12 @@ svg {
     max-width: 44vw;
     min-width: 44vw;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444444;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
     pointer-events: none;
     z-index: 10000;
 }
@@ -97,8 +100,8 @@ svg {
     font-weight: bold;
     font-size: 15px;
     color: #444444;
-    min-width: 140px;
-    max-width: 140px;
+    min-width: 160px;
+    max-width: 160px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
@@ -153,8 +156,6 @@ svg {
     -moz-transform: transform 0.1s ease-in-out;
     -ms-transform: transform 0.1s ease-in-out;
 }
-
-
 
 #option_button_0 {
     flex: 1;
@@ -267,8 +268,6 @@ svg {
     max-width: 140px;
     height: 40px;
 }
-
-
 
 #quiz_answer_0_text_container,
 #quiz_answer_1_text_container {
@@ -402,9 +401,6 @@ svg {
     width: 50px;
     max-height: 50px;
     margin-left: 25px;
-
-
-
 }
 
 #div_next_button:hover {
@@ -413,7 +409,6 @@ svg {
     -moz-transform: transform 0.1s ease-in-out;
     -ms-transform: transform 0.1s ease-in-out;
 }
-
 
 /* RESULT.HTML STYLING */
 
@@ -441,7 +436,6 @@ svg {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 35px;
     text-align: center;
-
 }
 
 #result_content_container {
@@ -495,7 +489,6 @@ svg {
     font-family: Verdana;
 }
 
-
 #om_kkq {
     display: block;
     margin: auto;
@@ -548,16 +541,13 @@ svg {
         font-size: 22px;
         text-align: left;
         margin-left: 5px;
-
     }
 
     #page_head {
         height: 27px;
-
     }
 
     #info_button {
-
         margin-top: -30px;
     }
 
@@ -572,7 +562,6 @@ svg {
     .heading {
         font-size: 18px;
     }
-
 }
 
 @media only screen and (max-width: 793px) {
@@ -617,13 +606,6 @@ svg {
 
     #quiz_answer_0_checkmark,
     #quiz_answer_1_checkmark {
-        max-width: 190px;
-        min-width: 190px;
-        margin-bottom: 0;
-    }
-
-    #quiz_answer_0_checkmark>img,
-    #quiz_answer_1_checkmark>img {
         margin-left: 55px;
         margin: 0 40px 10px 0;
         padding: 0 0 0 40px;
@@ -679,10 +661,6 @@ svg {
 
     #quiz_answer {
         margin: 20px 5px 20px 5px;
-    }
-
-    #quiz_answer_0 {
-        margin-right: 1%;
     }
 
     #div_next_button {

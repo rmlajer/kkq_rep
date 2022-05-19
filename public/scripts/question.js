@@ -6,8 +6,6 @@ function page_load() {
     check_question_id();
     get_question(localStorage.getItem('localQuestionId'));
     back_restriction();
-    
-
 }
 
 function back_restriction() {

@@ -8,18 +8,6 @@ function check_question_id() {
     console.log("localAnswers: " + localStorage.getItem('localAnswers'));
 }
 
-/*<div id="tooltip" class="hidden">
-    <p><strong>Søjlens farve</strong></p>
-    <p><span id="value">100</span></p>
-  </div>*/
-
-/*d3.select((""))
-    .on("mouseover", function (event, d) { show_infobox(); })
-    .on("mouseout", function () {
-        // Gem tooltip til næste gang
-
-    });*/
-
 function show_infobox(event) {
 
     console.log("Event: " + event);
