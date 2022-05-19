@@ -343,12 +343,6 @@ svg {
     width: 50px;
     max-height: 50px;
     margin-left: 25px;
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
 }
 
 #div_next_button:hover {
@@ -365,14 +359,10 @@ svg {
     flex: 1;
     margin-right: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-<<<<<<< HEAD
-
-=======
 }
 
 #result_level_image > img {
     width: 100%;
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
 }
 
 #result_comparison_container {
@@ -552,20 +542,9 @@ svg {
 
     #quiz_answer_0_checkmark,
     #quiz_answer_1_checkmark {
-<<<<<<< HEAD
-        max-width: 190px;
-        min-width: 190px;
-        margin-bottom: 0;
-    }
-
-    #quiz_answer_0_checkmark>img,
-    #quiz_answer_1_checkmark>img {
-        margin-left: 55px;
-=======
         margin: 0 40px 10px 0;
         padding: 0 0 0 40px;
         flex-direction: row-reverse;
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
     }
 
     #emission_breakdown {
@@ -574,14 +553,11 @@ svg {
         margin-bottom: 0;
     }
 
-<<<<<<< HEAD
-=======
     #emission_category_container {
         min-width: 80vw;
         padding: 0 10vw 0 10vw;
     }
 
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
     #div_next_button {
         width: 100px;
         right: 0px;
@@ -594,7 +570,6 @@ svg {
         width: 94%;
         padding: 3%;
     }
-<<<<<<< HEAD
 
     /* REFERENCES.HTML MEDIA STYLING */
 
@@ -602,8 +577,6 @@ svg {
         font-size: 25px;
     }
 
-=======
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
 }
 
 @media only screen and (max-width: 500px) {
@@ -625,13 +598,6 @@ svg {
         margin: 20px 5px 20px 5px;
     }
 
-<<<<<<< HEAD
-    #quiz_answer_0 {
-        margin-right: 1%;
-    }
-
-=======
->>>>>>> 8ccf3ef80c1fca74b1df058d6cfe02ac6243a887
     #div_next_button {
         width: 60px;
         right: 0px;
