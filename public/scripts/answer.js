@@ -66,7 +66,7 @@ function get_answer() {
                     .append("img")
                     .attr("src", "images/checkmark.png");
             } else {
-                d3.select('#quiz_answer').text(`Du svarede forkert! ${data.data[1 - correctAnswer].name.split(",")[0]} udleder MERE co2e end ${data.data[correctAnswer].name.split(",")[0]}.`);
+                d3.select('#quiz_answer').text(`Du svarede forkert! ${data.data[1 - correctAnswer].name.split(",")[0]} udleder MERE CO2e/kg end ${data.data[correctAnswer].name.split(",")[0]}.`);
                 d3.select(`#quiz_answer_${1 - correctAnswer}_checkmark`)
                     .style("background-color", "#444444")
                     .append("img")
