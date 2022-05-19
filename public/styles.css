@@ -427,7 +427,11 @@ svg {
     text-align: center;
 }
 
-#result_level_image>img {
+#result_level_image > img {
+    width: 80%;
+}
+#result_level_description {
+    display: inline-block;
     width: 80%;
 }
 
@@ -661,6 +665,11 @@ svg {
 
     #result_content_container {
         flex-direction: column;
+    }
+
+    #result_comparison_subheader,
+    #result_comparison_header {
+        margin-left: 0;
     }
 
     /* REFERENCES.HTML MEDIA STYLING */
