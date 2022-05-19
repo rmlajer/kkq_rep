@@ -63,6 +63,61 @@ svg {
     margin: auto;
 }
 
+#tooltip {
+    position: absolute;
+    width: 400px;
+    height: auto;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 10000;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+#tooltip_content_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tooltip_answer_0,
+#tooltip_answer_1 {
+    flex: 1;
+    background-color: #65c6e3;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #444444;
+    min-width: 140px;
+    max-width: 140px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#tooltip_answer_0 {
+    background-color: #f98a2f;
+    margin-right: 10px;
+}
+
+#tooltip>h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#tooltip p {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
 /* QUESTION.HTML STYLING */
 
 #quiz_question_div {
@@ -211,6 +266,8 @@ svg {
     height: 40px;
 }
 
+
+
 #quiz_answer_0_text_container,
 #quiz_answer_1_text_container {
     width: 40px;
@@ -284,7 +341,7 @@ svg {
     margin-top: 10px;
 }
 
-#agriculture_icon {
+#landbrug_icon {
     flex: 1;
     padding: 0 3vw 0 2vw;
 }
@@ -294,12 +351,12 @@ svg {
     padding: 0 3vw 0 3vw;
 }
 
-#processing_icon {
+#forarbejdning_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
 
-#packaging_icon {
+#emballage_icon {
     flex: 1;
     padding: 0 3vw 0 3vw;
 }
@@ -309,17 +366,17 @@ svg {
     padding: 0 3vw 0 3vw;
 }
 
-#retail_icon {
+#detailhandel_icon {
     flex: 1;
     padding: 0 2vw 0 3vw;
 }
 
-#agriculture_icon>img,
+#landbrug_icon>img,
 #iluc_icon>img,
-#processing_icon>img,
-#packaging_icon>img,
+#forarbejdning_icon>img,
+#emballage_icon>img,
 #transport_icon>img,
-#retail_icon>img {
+#detailhandel_icon>img {
     width: 100%;
     height: 100%;
 }
@@ -361,7 +418,7 @@ svg {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#result_level_image > img {
+#result_level_image>img {
     width: 100%;
 }
 
@@ -428,7 +485,7 @@ svg {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #ffffffCC;
     border-radius: 5px;
-    box-shadow: 0px  0px 2px 2px rgba(0, 0, 0, 0.377);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.377);
     line-height: 1.3em;
     width: 75%;
 }

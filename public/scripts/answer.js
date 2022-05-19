@@ -78,7 +78,6 @@ function get_answer() {
 
             const barPadding = 2;
             let dataset = [];
-            let textData = ["agriculture", "iluc", "processing", "packaging", "transport", "retail"];
             let yOffset = 10;
 
             dataset.push(parseFloat(data.data[0].agriculture));
@@ -147,11 +146,48 @@ function get_answer() {
                 .attr("stroke", "#444444")
                 .attr("stroke-width", (minX < 0) ? 1 : 2);
 
-            textData.forEach(emission_category => {
-                d3.select(`#${emission_category.toLowerCase()}_icon`)
-                    .append("img")
-                    .attr("src", `images/icon_${emission_category.toLowerCase()}.png`);
-                console.log(`#${emission_category.toLowerCase()}_icon`);
+            d3.json("/api/emission_category/", {
+                method: "GET"
+            }).then(function (response) {
+                const emissionCategories = response.data; // Hent data ud af response
+                console.log(emissionCategories.length);
+                emissionCategories.forEach(emission_category => {
+                    d3.select(`#${emission_category.danish_category.toLowerCase()}_icon`)
+                        .append("img")
+                        .attr("src", `images/icon_${emission_category.danish_category.toLowerCase()}.png`)
+                        .on("mouseover", function (event) {
+                            // Læs søjlens x og y position ud fra 'this'
+                            // Husk parseFloat for at lave text til number.
+                            const xPosition = event.clientX;
+                            const yPosition = event.clientY;
+                            console.log("x: " + xPosition + "y: " + yPosition);
+
+                            d3.select("#tooltip")
+                                .style("left", xPosition + "px")
+                                .style("top", yPosition + "px")
+                                .select("h2")
+                                .text(`${emission_category.danish_category}`);
+
+                            d3.select("#tooltip_answer_0")
+                                .text(`${data.data[0].name.split(",")[0]}: ${parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
+                            
+                            d3.select("#tooltip_answer_1")
+                                .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
+
+
+                            d3.select("#tooltip")
+                                .select("p")
+                                .text(`${emission_category.description}`);
+
+                            d3.select("#tooltip").classed("hidden", false);
+                        })
+                        .on("mouseout", function () {
+                            // Gem tooltip til næste gang
+                            d3.select("#tooltip").classed("hidden", true);
+                        });
+
+                    //console.log(`#${emission_category.toLowerCase()}_icon`);
+                });
             });
         });
 }

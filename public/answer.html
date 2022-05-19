@@ -13,6 +13,15 @@
 
 <body onload="page_load()">
 
+    <div id="tooltip" class="hidden">
+        <h2></h2>
+        <div id="tooltip_content_container">
+            <div id="tooltip_answer_0"></div>
+            <div id="tooltip_answer_1"></div>
+        </div>
+        <p></p>
+    </div>
+
     <!-- FIXED HEADER -->
     <header id="page_head">
         <div id="page_title">KlimaKostQuizzen</div>
@@ -45,12 +54,12 @@
         </div>
         <div id="content_container">
             <div id="emission_category_container">
-                <div id="agriculture_icon"></div>
+                <div id="landbrug_icon"></div>
                 <div id="iluc_icon"></div>
-                <div id="processing_icon"></div>
-                <div id="packaging_icon"></div>
+                <div id="forarbejdning_icon"></div>
+                <div id="emballage_icon"></div>
                 <div id="transport_icon"></div>
-                <div id="retail_icon"></div>
+                <div id="detailhandel_icon"></div>
             </div>
         </div>
         <div id="div_next_button" onclick="next_button_click()">
