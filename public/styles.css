@@ -434,12 +434,15 @@ svg {
 
 #result_comparison_header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 7.3px;
+    margin-left: 35px;
+    text-align: center;
+
 }
 
 #result_comparison_subheader {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 7.3px;
+    margin-left: 35px;
+    text-align: center;
 }
 
 #result_comparison_container>div {
