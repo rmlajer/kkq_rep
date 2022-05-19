@@ -694,33 +694,6 @@ svg {
         margin-top: -30px;
     }
 
-    /*
-    #tooltip {
-        max-width: 44vw;
-        min-width: 44vw;
-        padding: 5px;
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-    }
-
-    #tooltip_answer_0,
-    #tooltip_answer_1 {
-        padding: 3px 1px 3px 1px;
-        border-radius: 5px;
-        font-size: 11px;
-        min-width: 140px;
-        max-width: 140px;
-        margin-bottom: 5px;
-    }
-
-    #tooltip>h2 {
-        font-size: 14px;
-    }
-
-    #tooltip>p {
-        font-size: 11px;
-        line-height: 13px;
-    }*/
-
     #quiz_answer {
         margin: 20px 5px 20px 5px;
     }
@@ -736,11 +709,11 @@ svg {
         margin-left: 5px;
     }
 
-    #om_kkq {
+    /*#om_kkq {
         width: 100%;
     }
 
     #om_dskd {
         width: 100%;
-    }
+    }*/
 }
