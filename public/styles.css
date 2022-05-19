@@ -70,9 +70,12 @@ svg {
     max-width: 44vw;
     min-width: 44vw;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #444444;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
     pointer-events: none;
     z-index: 10000;
 }
@@ -97,8 +100,8 @@ svg {
     font-weight: bold;
     font-size: 15px;
     color: #444444;
-    min-width: 140px;
-    max-width: 140px;
+    min-width: 160px;
+    max-width: 160px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }

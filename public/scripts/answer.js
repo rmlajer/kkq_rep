@@ -114,14 +114,16 @@ function get_answer() {
             });
 
             var scale = d3.scaleLinear()
-                .domain([minX, maxX/* - ((minX < 0) ? minX : 0)*/])
+                .domain([minX, maxX])
                 .range([0, 100]);
-
 
             svg.selectAll("rect")
                 .data(dataset)
                 .enter()
                 .append("rect")
+                .attr("id", function (d, i) {
+                    return `emission_category_${Math.floor(i / 2)}`;
+                })
                 .attr("x", function (d, i) {
                     return ((100 - 5 * barPadding) / dataset.length * i + Math.floor(i / 2) * barPadding) + "%";
                 })
@@ -131,7 +133,6 @@ function get_answer() {
                 })
                 .attr("width", ((100 - 5 * barPadding) / dataset.length) + "%")
                 .attr("height", function (d) {
-                    //console.log("d: " + d + " -  scale: " + scale(d + minX));
                     return (scale((d < 0) ? -d + minX : d + minX)) + "%";
                 })
                 .attr("fill", function (d, i) {
@@ -149,27 +150,47 @@ function get_answer() {
             d3.json("/api/emission_category/", {
                 method: "GET"
             }).then(function (response) {
-                const emissionCategories = response.data; // Hent data ud af response
+                const emissionCategories = response.data;
                 console.log(emissionCategories.length);
                 emissionCategories.forEach(emission_category => {
-                    d3.select(`#${emission_category.danish_category.toLowerCase()}_icon`)
-                        .append("img")
-                        .attr("src", `images/icon_${emission_category.danish_category.toLowerCase()}.png`)
-                        .on("mouseover", function (event) {
-                            // Læs søjlens x og y position ud fra 'this'
-                            // Husk parseFloat for at lave text til number.'
+
+                    let barId = "";
+                    switch (emission_category.category.toLowerCase()) {
+                        case 'agriculture':
+                            barId = "emission_category_0";
+                            break;
+                        case 'iluc':
+                            barId = "emission_category_1";
+                            break;
+                        case 'processing':
+                            barId = "emission_category_2";
+                            break;
+                        case 'packaging':
+                            barId = "emission_category_3";
+                            break;
+                        case 'transport':
+                            barId = "emission_category_4";
+                            break;
+                        case 'retail':
+                            barId = "emission_category_5";
+                            break;
+                        default:
+                            break;
+                    }
+                    console.log(emission_category.category.toLowerCase());
+                    d3.selectAll("#" + barId)
+                        .on("mouseover", function () {
                             let iconElement = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect();
+
                             let xPosition = 0;
 
                             if (parseInt(emission_category.category_id) < 4) {
                                 xPosition = iconElement.x + iconElement.width;
                             } else {
-                                xPosition = iconElement.x - (46 * window.innerWidth / 100);
+                                xPosition = iconElement.x - (45 * window.innerWidth / 100) - 5;
                             }
 
-
                             let yPosition = document.getElementById("emission_breakdown").getBoundingClientRect().top;
-
 
                             d3.select("#tooltip")
                                 .style("left", xPosition + "px")
@@ -183,6 +204,52 @@ function get_answer() {
                             d3.select("#tooltip_answer_1")
                                 .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
+                            d3.select("#tooltip")
+                                .select("p")
+                                .text(`${emission_category.description}`);
+
+                            d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
+                                .style("transform", "scale(1.10)")
+                                .style("cursor", "pointer");
+
+                            d3.select("#tooltip").classed("hidden", false);
+                        })
+                        .on("mouseout", function () {
+                            d3.select("#tooltip").classed("hidden", true);
+
+                            d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
+                                .style("transform", "scale(1.0)")
+                                .style("cursor", "default");
+                        });
+
+                    d3.select(`#${emission_category.danish_category.toLowerCase()}_icon`)
+                        .append("img")
+                        .attr("src", `images/icon_${emission_category.danish_category.toLowerCase()}.png`)
+                        .on("mouseover", function () {
+
+                            let iconElement = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect();
+
+                            let xPosition = 0;
+
+                            if (parseInt(emission_category.category_id) < 4) {
+                                xPosition = iconElement.x + iconElement.width;
+                            } else {
+                                xPosition = iconElement.x - (45 * window.innerWidth / 100) - 5;
+                            }
+
+                            let yPosition = document.getElementById("emission_breakdown").getBoundingClientRect().top;
+
+                            d3.select("#tooltip")
+                                .style("left", xPosition + "px")
+                                .style("top", yPosition + "px")
+                                .select("h2")
+                                .text(`${emission_category.danish_category}`);
+
+                            d3.select("#tooltip_answer_0")
+                                .text(`${data.data[0].name.split(",")[0]}: ${parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
+
+                            d3.select("#tooltip_answer_1")
+                                .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
                             d3.select("#tooltip")
                                 .select("p")
@@ -195,15 +262,12 @@ function get_answer() {
                             d3.select("#tooltip").classed("hidden", false);
                         })
                         .on("mouseout", function () {
-                            // Gem tooltip til næste gang
                             d3.select("#tooltip").classed("hidden", true);
 
                             d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
                                 .style("transform", "scale(1.0)")
                                 .style("cursor", "default");
                         });
-
-                    //console.log(`#${emission_category.toLowerCase()}_icon`);
                 });
             });
         });
