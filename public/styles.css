@@ -94,11 +94,11 @@ svg {
 #tooltip_answer_1 {
     flex: 1;
     background-color: #65c6e3;
-    padding: 10px 10px 10px 10px;
+    padding: 7px 3px 7px 3px;
     border-radius: 10px;
     border-width: 0px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     color: #444444;
     min-width: 160px;
     max-width: 160px;
@@ -114,13 +114,16 @@ svg {
 #tooltip>h2 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+    font-size: 20px;
+    color: #444444;
 }
 
-#tooltip p {
+#tooltip>p {
     margin-top: 10px;
     font-family: sans-serif;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #444444;
 }
 
 /* QUESTION.HTML STYLING */
@@ -568,14 +571,40 @@ svg {
 
     /* GENERAL MEDIA STYLING*/
 
+    #tooltip {
+        max-width: 74vw;
+        min-width: 74vw;
+    }
+
+    #tooltip_content_container,
     #content_container {
         flex-direction: column;
     }
 
+    #tooltip_content_container>*,
     #content_container>* {
         margin-right: 0;
         margin-bottom: 2vh;
     }
+
+    #tooltip_answer_0,
+    #tooltip_answer_1 {
+        border-radius: 8px;
+        font-size: 13px;
+        min-width: 150px;
+        max-width: 150px;
+        margin-bottom: 5px;
+    }
+
+    #tooltip>h2 {
+        font-size: 16px;
+    }
+
+    #tooltip>p {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    
 
     /* QUESTION.HTML MEDIA STYLING */
 
@@ -658,6 +687,33 @@ svg {
     #info_button {
         margin-top: -30px;
     }
+
+    /*
+    #tooltip {
+        max-width: 44vw;
+        min-width: 44vw;
+        padding: 5px;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    #tooltip_answer_0,
+    #tooltip_answer_1 {
+        padding: 3px 1px 3px 1px;
+        border-radius: 5px;
+        font-size: 11px;
+        min-width: 140px;
+        max-width: 140px;
+        margin-bottom: 5px;
+    }
+
+    #tooltip>h2 {
+        font-size: 14px;
+    }
+
+    #tooltip>p {
+        font-size: 11px;
+        line-height: 13px;
+    }*/
 
     #quiz_answer {
         margin: 20px 5px 20px 5px;
