@@ -421,11 +421,16 @@ svg {
     flex: 1;
     margin-right: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
 
+#result_header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
 }
 
 #result_level_image>img {
-    width: 100%;
+    width: 80%;
 }
 
 #result_comparison_container {
@@ -437,6 +442,10 @@ svg {
     margin-left: 35px;
     text-align: center;
 
+}
+
+#result_content_container {
+    display: flex;
 }
 
 #result_comparison_subheader {

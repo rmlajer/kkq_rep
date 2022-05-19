@@ -31,7 +31,7 @@ function page_load() {
                     method: "GET"
                 }).then(function (data) {
                     console.log(data.data[0].description);
-                    d3.select('#result_level_counter').text(`Du fik ${data.data[0].level_id}/10 rigtige!`);
+                    d3.select('#result_header').text(`Du fik ${data.data[0].level_id}/10 rigtige!`);
                     d3.select('#result_level_title').text(`Dit level: ${data.data[0].title}`);
                     d3.select('#result_level_image')
                         .append("img")
