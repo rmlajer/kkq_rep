@@ -659,10 +659,8 @@ svg {
 
     /* RESULT.HTML MEDIA STYLING*/
 
-    .column {
-        float: left;
-        width: 94%;
-        padding: 3%;
+    #result_content_container {
+        flex-direction: column;
     }
 
     /* REFERENCES.HTML MEDIA STYLING */
@@ -670,7 +668,6 @@ svg {
     #references_heading {
         font-size: 25px;
     }
-
 }
 
 @media only screen and (max-width: 500px) {

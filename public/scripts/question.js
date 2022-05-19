@@ -12,13 +12,13 @@ function back_restriction() {
     let local_answers = JSON.parse(localStorage.getItem('localAnswers'));
     if (local_answers != null && local_answers.length >= localStorage.getItem('localQuestionId') ) {
 
+        d3.select(`#option_button_${1 - local_answers[localStorage.getItem('localQuestionId') - 1]}`).style("opacity", "50%");
+
         document.getElementById("option_button_0").disabled = true;
-        d3.select('#option_button_0').style("background-color", "#888888");
         d3.select('#option_button_0').style("cursor", "default");
         d3.select('#option_button_0').style("transform", "none");
 
         document.getElementById("option_button_1").disabled = true;
-        d3.select('#option_button_1').style("background-color", "#888888");
         d3.select('#option_button_1').style("cursor", "default");
         d3.select('#option_button_1').style("transform", "none");
 
@@ -62,6 +62,6 @@ function update_answer(question_id, option_chosen) {
 
 function option_button_click(value) {
     update_answer(localStorage.getItem('localQuestionId'), value);
-    location.href = '/answer.html';
     back_restriction();
+    location.href = '/answer.html';
 }
