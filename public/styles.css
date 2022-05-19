@@ -157,8 +157,6 @@ svg {
     -ms-transform: transform 0.1s ease-in-out;
 }
 
-
-
 #option_button_0 {
     flex: 1;
     background-color: #f98a2f;
@@ -270,8 +268,6 @@ svg {
     max-width: 140px;
     height: 40px;
 }
-
-
 
 #quiz_answer_0_text_container,
 #quiz_answer_1_text_container {
@@ -405,9 +401,6 @@ svg {
     width: 50px;
     max-height: 50px;
     margin-left: 25px;
-
-
-
 }
 
 #div_next_button:hover {
@@ -417,14 +410,12 @@ svg {
     -ms-transform: transform 0.1s ease-in-out;
 }
 
-
 /* RESULT.HTML STYLING */
 
 #result_level_container {
     flex: 1;
     margin-right: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 
 #result_level_image>img {
@@ -439,7 +430,6 @@ svg {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 35px;
     text-align: center;
-
 }
 
 #result_comparison_subheader {
@@ -488,7 +478,6 @@ svg {
     font-size: 40px;
     font-family: Verdana;
 }
-
 
 #om_kkq {
     display: block;
@@ -542,16 +531,13 @@ svg {
         font-size: 22px;
         text-align: left;
         margin-left: 5px;
-
     }
 
     #page_head {
         height: 27px;
-
     }
 
     #info_button {
-
         margin-top: -30px;
     }
 
@@ -566,7 +552,6 @@ svg {
     .heading {
         font-size: 18px;
     }
-
 }
 
 @media only screen and (max-width: 793px) {

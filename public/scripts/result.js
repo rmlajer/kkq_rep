@@ -3,9 +3,7 @@ function page_load() {
     let userCorrectAnswerCount = 0;
     console.log(localAnswers);
 
-
     for (let i = 1; i <= 10; i++) {
-
         d3.json("/api/result/" + i, {
             method: "GET"
         }).then(function (data) {
@@ -26,7 +24,6 @@ function page_load() {
             }
 
             if (i == 10) {
-
                 d3.json("/api/result_level/" + userCorrectAnswerCount, {
                     method: "GET"
                 }).then(function (data) {
@@ -51,10 +48,8 @@ function page_load() {
                 .domain([0, totalAnswerCount])
                 .range([0, 100]);
 
-
             console.log('Correct: ' + correctAnswerCount);
             console.log('Incorrect: ' + totalAnswerCount);
-
 
             d3.select("#result_comparison_container").append("div")
                 .attr("id", "result_" + i + "_container")
@@ -107,7 +102,6 @@ function page_load() {
                 .attr('width', scale(correctAnswerCount) + "%")
                 .attr('height', 35)
                 .attr('fill', '#90DA50');
-
         })
     }
 }

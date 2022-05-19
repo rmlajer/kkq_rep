@@ -3,7 +3,6 @@ function page_load() {
     get_question(localStorage.getItem('localQuestionId'));
     get_answer();
     d3.select('#progress').text(`${localStorage.getItem('localQuestionId')}/10`);
-
 }
 
 //Counts question in localStorage
