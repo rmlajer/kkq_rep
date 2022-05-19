@@ -12,16 +12,22 @@ function page_load() {
 
 function back_restriction() {
     let local_answers = JSON.parse(localStorage.getItem('localAnswers'));
-    if (local_answers.length >= localStorage.getItem('localQuestionId')) {
-        console.log("Back restriction check")
+    if (local_answers != null && local_answers.length >= localStorage.getItem('localQuestionId') ) {
+
         document.getElementById("option_button_0").disabled = true;
         d3.select('#option_button_0').style("background-color", "#888888");
+        d3.select('#option_button_0').style("cursor", "default");
+        d3.select('#option_button_0').style("transform", "none");
+
         document.getElementById("option_button_1").disabled = true;
         d3.select('#option_button_1').style("background-color", "#888888");
-        document.getElementById('div_next_button').style.visibility = "visible";
+        d3.select('#option_button_1').style("cursor", "default");
+        d3.select('#option_button_1').style("transform", "none");
+
+        document.getElementById('div_question_next_button').style.visibility = "visible";
     }
-    
 }
+
 
 //Henter svarmuligheder fra question database og appender disse til button text, fjerner alt efter første komma
 function get_question(id) {
@@ -30,19 +36,14 @@ function get_question(id) {
     }).then(function (response) {
         const data = response.data; // Hent data ud af response
 
-
         d3.select('#option_button_0').text(data[0].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_0.png`);
         d3.select('#option_button_1').text(data[1].name.split(",")[0])
             .append("img")
             .attr("src", `images/icon_${id}_1.png`);
-
-
     })
 }
-
-
 
 //Tjekker om localAnswers eksisterer, parser til array og pusher option_chosen. Hvis localAnswers ikke eksisterer laves denne. 
 function update_answer(question_id, option_chosen) {
