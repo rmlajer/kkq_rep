@@ -67,8 +67,8 @@ svg {
     position: absolute;
     width: auto;
     height: auto;
-    max-width: 44vw;
-    min-width: 44vw;
+    max-width: 35vw;
+    min-width: 350px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -439,9 +439,19 @@ svg {
     flex: 1;
 }
 
+.indiv_result_container {
+    width: 90%;
+    margin: auto;
+}
+
+#result_comparison_container svg {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
 #result_comparison_header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 35px;
+    margin-left: 57px;
     text-align: center;
 }
 
@@ -451,7 +461,7 @@ svg {
 
 #result_comparison_subheader {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 35px;
+    margin-left: 57px;
     text-align: center;
 }
 
@@ -576,8 +586,8 @@ svg {
     /* GENERAL MEDIA STYLING*/
 
     #tooltip {
-        max-width: 74vw;
-        min-width: 74vw;
+        max-width: 72vw;
+        min-width: 72vw;
     }
 
     #tooltip_content_container,

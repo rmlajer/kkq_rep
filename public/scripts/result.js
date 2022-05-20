@@ -102,6 +102,15 @@ function page_load() {
                 .attr('width', scale(correctAnswerCount) + "%")
                 .attr('height', 35)
                 .attr('fill', '#90DA50');
+
+            svg.append("text")
+                .attr('x', 8)
+                .attr('y', 22.5)
+                .text(Math.round(correctAnswerCount / totalAnswerCount * 100) + "%")
+                .style('fill', '#555555');
+            
+            
+
         })
     }
 }
