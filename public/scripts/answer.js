@@ -60,7 +60,7 @@ function get_answer() {
             }
 
             if (answers[currentQuestion - 1] == correctAnswer) {
-                d3.select('#quiz_answer').text(`Du svarede rigtigt! ${data.data[correctAnswer].name.split(",")[0]} udleder MINDRE co2e end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
+                d3.select('#quiz_answer').text(`Du svarede rigtigt! ${data.data[correctAnswer].name.split(",")[0]} udleder MINDRE co2e/kg end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
                 d3.select(`#quiz_answer_${correctAnswer}_checkmark`)
                     .style("background-color", "#90da50")
                     .append("img")
