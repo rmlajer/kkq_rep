@@ -201,10 +201,10 @@ function get_answer() {
                             let iconElement = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect();
 
                             d3.select("#tooltip_answer_0")
-                                .text(`${data.data[0].name.split(",")[0]}: ${parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
+                                .text(`${data.data[0].name.split(",")[0]}: ${(parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2) == "-0.00") ? "0.00" : parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
                             d3.select("#tooltip_answer_1")
-                                .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
+                                .text(`${data.data[1].name.split(",")[0]}: ${(parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2) == "-0.00") ? "0.00" : parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
                             d3.select("#tooltip")
                                 .select("h2")
@@ -290,10 +290,10 @@ function get_answer() {
                             let iconElement = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect();
 
                             d3.select("#tooltip_answer_0")
-                                .text(`${data.data[0].name.split(",")[0]}: ${parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
+                                .text(`${data.data[0].name.split(",")[0]}: ${(parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2) == "-0.00") ? "0.00" : parseFloat(data.data[0][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
                             d3.select("#tooltip_answer_1")
-                                .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
+                                .text(`${data.data[1].name.split(",")[0]}: ${(parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2) == "-0.00") ? "0.00" : parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
                             d3.select("#tooltip_emission_title")
                                 .text(`${emission_category.danish_category}`);
