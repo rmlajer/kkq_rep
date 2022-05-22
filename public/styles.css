@@ -435,9 +435,10 @@ svg {
     text-align: center;
 }
 
-#result_level_image > img {
+#result_level_image>img {
     width: 80%;
 }
+
 #result_level_description {
     display: inline-block;
     width: 80%;
@@ -522,8 +523,8 @@ svg {
     background-color: #ffffffCC;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.377);
-    line-height: 1.3em;
-    width: 75%;
+    font-size: 20px;
+    width: 65%;
 }
 
 #om_dskd {
@@ -535,8 +536,8 @@ svg {
     background-color: #ffffffCC;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.377);
-    line-height: 1.3em;
-    width: 75%;
+    font-size: 20px;
+    width: 65%;
 }
 
 .heading {
@@ -545,9 +546,12 @@ svg {
 }
 
 #dskd_link_button {
+    display: block;
+    margin: 30px auto 10px auto;
     padding: 20px;
     font-family: Verdana;
     font-weight: bold;
+    font-size: 20px;
     background-color: #f98a2f;
     border-width: 0;
     border-radius: 3px;
@@ -559,34 +563,6 @@ svg {
     -webkit-transform: transform 0.5s ease-in-out;
     -moz-transform: transform 0.5s ease-in-out;
     -ms-transform: transform 0.5s ease-in-out;
-}
-
-@media only screen and (max-width: 500px) {
-    #page_title {
-        font-size: 22px;
-        text-align: left;
-        margin-left: 5px;
-    }
-
-    #page_head {
-        height: 27px;
-    }
-
-    #info_button {
-        margin-top: -30px;
-    }
-
-    #om_dskd {
-        width: 90%
-    }
-
-    #om_kkq {
-        width: 90%
-    }
-
-    .heading {
-        font-size: 18px;
-    }
 }
 
 @media only screen and (max-width: 793px) {
@@ -621,7 +597,7 @@ svg {
         font-size: 13px;
         line-height: 15px;
     }
-    
+
 
     /* QUESTION.HTML MEDIA STYLING */
 
@@ -690,6 +666,16 @@ svg {
     #references_heading {
         font-size: 25px;
     }
+
+    #om_kkq {
+        font-size: 17px;
+        width: 85%;
+    }
+
+    #om_dskd {
+        font-size: 17px;
+        width: 85%;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -720,5 +706,24 @@ svg {
         width: 40px;
         max-height: 40px;
         margin-left: 5px;
+    }
+
+    #om_dskd {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    #om_kkq {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .heading {
+        font-size: 18px;
+    }
+
+    #dskd_link_button {
+        font-size: 14px;
+        padding: 10px
     }
 }
