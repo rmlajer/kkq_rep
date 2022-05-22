@@ -585,11 +585,6 @@ svg {
 
     /* GENERAL MEDIA STYLING*/
 
-    #tooltip {
-        max-width: 72vw;
-        min-width: 72vw;
-    }
-
     #tooltip_content_container,
     #content_container {
         flex-direction: column;

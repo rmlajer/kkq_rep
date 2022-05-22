@@ -1,3 +1,5 @@
+const { text } = require("body-parser");
+
 function page_load() {
     // Simpel log check for localQuestionCounter (ligger i general.js)
     check_question_id();
@@ -205,17 +207,26 @@ function get_answer() {
                                 if (parseInt(emission_category.category_id) < 4) {
                                     xPosition = iconElement.x + iconElement.width;
                                 } else {
-                                    xPosition = iconElement.x - (45 * window.innerWidth / 100) - 5;
+                                    xPosition = iconElement.x - document.getElementById("tooltip").getBoundingClientRect().width;
                                 }
                                 yPosition = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect().bottom - document.getElementById("tooltip").getBoundingClientRect().height;
+
+                                d3.select("#tooltip")
+                                    .style("left", xPosition + "px")
+                                    .style("top", yPosition + "px")
                             }
                             else {
                                 xPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().left;
-                                yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 5;
+                                yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4;
+                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width
+
+                                d3.select("#tooltip")
+                                    .style("min-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px")
+                                    .style("max-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px");
+                                d3.select("#tooltip")
+                                    .style("left", document.getElementById("emission_breakdown_svg").getBoundingClientRect().left + "px")
+                                    .style("top", document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4 + "px");
                             }
-                            d3.select("#tooltip")
-                                .style("left", xPosition + "px")
-                                .style("top", yPosition + "px")
 
                             svg.selectAll('rect').
                                 style("opacity", function () {
@@ -264,12 +275,10 @@ function get_answer() {
                             d3.select("#tooltip_answer_1")
                                 .text(`${data.data[1].name.split(",")[0]}: ${parseFloat(data.data[1][emission_category.category.toLowerCase()]).toFixed(2)}`);
 
-                            d3.select("#tooltip")
-                                .select("h2")
+                            d3.select("#tooltip_emission_title")
                                 .text(`${emission_category.danish_category}`);
 
-                            d3.select("#tooltip")
-                                .select("p")
+                            d3.select("#tooltip_emission_description")
                                 .text(`${emission_category.description}`);
 
                             d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
@@ -285,17 +294,26 @@ function get_answer() {
                                 if (parseInt(emission_category.category_id) < 4) {
                                     xPosition = iconElement.x + iconElement.width;
                                 } else {
-                                    xPosition = iconElement.x - (45 * window.innerWidth / 100) - 5;
+                                    xPosition = iconElement.x - document.getElementById("tooltip").getBoundingClientRect().width;
                                 }
                                 yPosition = document.getElementById(emission_category.danish_category.toLowerCase() + "_icon").getBoundingClientRect().bottom - document.getElementById("tooltip").getBoundingClientRect().height;
+
+                                d3.select("#tooltip")
+                                    .style("left", xPosition + "px")
+                                    .style("top", yPosition + "px")
                             }
                             else {
                                 xPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().left;
-                                yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 5;
+                                yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4;
+                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width
+
+                                d3.select("#tooltip")
+                                    .style("min-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px")
+                                    .style("max-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px");
+                                d3.select("#tooltip")
+                                    .style("left", document.getElementById("emission_breakdown_svg").getBoundingClientRect().left + "px")
+                                    .style("top", document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4 + "px");
                             }
-                            d3.select("#tooltip")
-                                .style("left", xPosition + "px")
-                                .style("top", yPosition + "px")
 
                             svg.selectAll('rect').
                                 style("opacity", function () {
