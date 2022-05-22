@@ -62,18 +62,38 @@ function get_answer() {
             }
 
             if (answers[currentQuestion - 1] == correctAnswer) {
-                d3.select('#quiz_answer').text(`Du svarede rigtigt! ${data.data[correctAnswer].name.split(",")[0]} udleder MINDRE co2e/kg end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
+                d3.select('#quiz_answer').selectAll("h2")
+                    .text(`Du svarede rigtigt!`);
+
+                d3.select('#quiz_answer').selectAll("h3")
+                    .html(`${data.data[correctAnswer].name.split(",")[0]} udleder <span style="font-size: smaller">mindre</span> CO2e/kg end ${data.data[1 - correctAnswer].name.split(",")[0]}.`);
+
                 d3.select(`#quiz_answer_${correctAnswer}_checkmark`)
                     .style("background-color", "#90da50")
                     .append("img")
                     .attr("src", "images/checkmark.png");
-            } else {
-                d3.select('#quiz_answer').text(`Du svarede forkert! ${data.data[1 - correctAnswer].name.split(",")[0]} udleder MERE CO2e/kg end ${data.data[correctAnswer].name.split(",")[0]}.`);
+            }
+            else {
+                d3.select('#quiz_answer').selectAll("h2")
+                    .text(`Du svarede forkert!`);
+
+                d3.select('#quiz_answer').selectAll("h3")
+                    .html(`${data.data[1 - correctAnswer].name.split(",")[0]} udleder <span style="font-size: larger">mere</span> CO2e/kg end ${data.data[correctAnswer].name.split(",")[0]}.`);
+
                 d3.select(`#quiz_answer_${1 - correctAnswer}_checkmark`)
                     .style("background-color", "#444444")
                     .append("img")
                     .attr("src", "images/cross.png");
             }
+
+            // for visualising totals with size
+            /* 
+            d3.select(`#quiz_answer_${correctAnswer}_checkmark`)
+                .style("transform", "scale(0.9)");
+
+            d3.select(`#quiz_answer_${1 - correctAnswer}_checkmark`)
+                .style("transform", "scale(1.1)");
+            */
 
             const barPadding = 2;
             let dataset = [];
@@ -218,14 +238,14 @@ function get_answer() {
                             else {
                                 xPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().left;
                                 yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4;
-                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width
+                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24;
 
                                 d3.select("#tooltip")
-                                    .style("min-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px")
-                                    .style("max-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px");
+                                    .style("min-width", svgWidth + "px")
+                                    .style("max-width", svgWidth + "px");
                                 d3.select("#tooltip")
-                                    .style("left", document.getElementById("emission_breakdown_svg").getBoundingClientRect().left + "px")
-                                    .style("top", document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4 + "px");
+                                    .style("left", xPosition + "px")
+                                    .style("top", yPosition + "px");
                             }
 
                             svg.selectAll('rect').
@@ -305,14 +325,14 @@ function get_answer() {
                             else {
                                 xPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().left;
                                 yPosition = document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4;
-                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width
+                                let svgWidth = document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24;
 
                                 d3.select("#tooltip")
-                                    .style("min-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px")
-                                    .style("max-width", (document.getElementById("emission_breakdown_svg").getBoundingClientRect().width - 24) + "px");
+                                    .style("min-width", svgWidth + "px")
+                                    .style("max-width", svgWidth + "px");
                                 d3.select("#tooltip")
-                                    .style("left", document.getElementById("emission_breakdown_svg").getBoundingClientRect().left + "px")
-                                    .style("top", document.getElementById("emission_breakdown_svg").getBoundingClientRect().top - document.getElementById("tooltip").getBoundingClientRect().height - 4 + "px");
+                                    .style("left", xPosition + "px")
+                                    .style("top", yPosition + "px");
                             }
 
                             svg.selectAll('rect').

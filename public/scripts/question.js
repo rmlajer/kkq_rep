@@ -6,11 +6,22 @@ function page_load() {
     check_question_id();
     get_question(localStorage.getItem('localQuestionId'));
     back_restriction();
+
+    d3.select("#co2e")
+        .on("mouseover", function () {
+            d3.select("#tooltip").classed("hidden", false);
+            d3.select("#tooltip")
+                .style("left", document.getElementById("co2e").getBoundingClientRect().left + (document.getElementById("co2e").getBoundingClientRect().width / 2) - (document.getElementById("tooltip").getBoundingClientRect().width / 2) + "px")
+                .style("top", document.getElementById("co2e").getBoundingClientRect().bottom + 3 + "px");
+        })
+        .on("mouseout", function () {
+            d3.select("#tooltip").classed("hidden", true);
+        });
 }
 
 function back_restriction() {
     let local_answers = JSON.parse(localStorage.getItem('localAnswers'));
-    if (local_answers != null && local_answers.length >= localStorage.getItem('localQuestionId') ) {
+    if (local_answers != null && local_answers.length >= localStorage.getItem('localQuestionId')) {
 
         d3.select(`#option_button_${1 - local_answers[localStorage.getItem('localQuestionId') - 1]}`).style("opacity", "50%");
 

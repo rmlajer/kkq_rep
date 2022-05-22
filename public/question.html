@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
@@ -11,6 +12,10 @@
 
 <body onload="page_load()">
 
+  <div id="tooltip" class="hidden" style="min-width: 160px; max-width: 160px">
+    <h3>CO2e står for CO2-Equivalent</h3>
+  </div>
+
   <!-- FIXED HEADER -->
   <header id="page_head">
     <div id="page_title">Klima Kost Quizzen</div>
@@ -20,7 +25,8 @@
   <!--The question page-->
   <div id="page_content">
     <div id="quiz_question_div">
-      <h2 id="quiz_question">Hvilken fødevare har det <span style="font-size: x-large">mindste</span> klimaaftryk? (CO2e/kg)</h2>
+      <h2 id="quiz_question">Hvilken fødevare har det <span style="font-size: x-large">mindste</span> klimaaftryk?
+        (<span style="border-style: none none dotted" id="co2e">CO2e</span>/kg)</h2>
     </div>
 
     <div id="content_container">
@@ -38,4 +44,5 @@
     </div>
   </div>
 </body>
+
 </html>

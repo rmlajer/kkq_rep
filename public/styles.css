@@ -118,6 +118,14 @@ svg {
     color: #444444;
 }
 
+#tooltip>h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 17px;
+    color: #444444;
+    margin: 10px 0px 10px 0px;
+}
+
 #tooltip>p {
     margin-top: 10px;
     font-family: sans-serif;
