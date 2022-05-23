@@ -32,7 +32,6 @@ function next_button_click() {
 // funktion der henter data fra api kald og loader data elementer
 function get_answer() {
 
-    //
     fetch('/api/questionbreakdown/' + localStorage.getItem("localQuestionId"))
         .then(response => response.json())
         .then(data => {
@@ -85,15 +84,6 @@ function get_answer() {
                     .append("img")
                     .attr("src", "images/cross.png");
             }
-
-            // for visualising totals with size
-            /* 
-            d3.select(`#quiz_answer_${correctAnswer}_checkmark`)
-                .style("transform", "scale(0.9)");
-
-            d3.select(`#quiz_answer_${1 - correctAnswer}_checkmark`)
-                .style("transform", "scale(1.1)");
-            */
 
             const barPadding = 2;
             let dataset = [];
@@ -210,9 +200,17 @@ function get_answer() {
                                 .select("h2")
                                 .text(`${emission_category.danish_category}`);
 
-                            d3.select("#tooltip")
-                                .select("p")
+                            d3.select("#tooltip_emission_description")
                                 .text(`${emission_category.description}`);
+
+                            if (parseFloat(data.data[0][emission_category.category.toLowerCase()]) < -0.01 || parseFloat(data.data[1][emission_category.category.toLowerCase()]) < -0.01) {
+                                d3.select("#tooltip_negative_description")
+                                .html('<span style="color: red; font-weight: bold">Negative værdier</span> er et resultat af biprodukter, som fortrænger udledning fra de alternativer de erstatter.');
+                            }
+                            else {
+                                d3.select("#tooltip_negative_description")
+                                    .text("");
+                            }
 
                             d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
                                 .style("transform", "scale(1.10)")
@@ -301,6 +299,14 @@ function get_answer() {
                             d3.select("#tooltip_emission_description")
                                 .text(`${emission_category.description}`);
 
+                            if (parseFloat(data.data[0][emission_category.category.toLowerCase()]) < -0.01 || parseFloat(data.data[1][emission_category.category.toLowerCase()]) < -0.01) {
+                                d3.select("#tooltip_negative_description")
+                                    .html('<span style="color: red; font-weight: bold">Negative værdier</span> er et resultat af biprodukter, som fortrænger udledning fra de alternativer de erstatter.');
+                            }
+                            else {
+                                d3.select("#tooltip_negative_description")
+                                    .text("");
+                            }
                             d3.select("#" + emission_category.danish_category.toLowerCase() + "_icon")
                                 .style("transform", "scale(1.10)")
                                 .style("cursor", "pointer");
