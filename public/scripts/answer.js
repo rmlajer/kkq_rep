@@ -205,7 +205,7 @@ function get_answer() {
 
                             if (parseFloat(data.data[0][emission_category.category.toLowerCase()]) < -0.01 || parseFloat(data.data[1][emission_category.category.toLowerCase()]) < -0.01) {
                                 d3.select("#tooltip_negative_description")
-                                .html('<span style="color: red; font-weight: bold">Negative værdier</span> er et resultat af biprodukter, som fortrænger udledning fra de alternativer de erstatter.');
+                                    .html('<span style="color: red; font-weight: bold">Negative værdier</span> er et resultat af biprodukter, som fortrænger udledning fra de alternativer de erstatter.');
                             }
                             else {
                                 d3.select("#tooltip_negative_description")
