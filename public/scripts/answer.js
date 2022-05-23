@@ -156,7 +156,7 @@ function get_answer() {
                     return (scale((d < 0) ? -d + minX : d + minX)) + "%";
                 })
                 .attr("fill", function (d, i) {
-                    return (i % 2 == 0) ? "#f98a2f" : "#69a3b2";
+                    return (i % 2 == 0) ? "#f98a2f" : "#65c6e3";
                 });
 
             svg.append("line")
