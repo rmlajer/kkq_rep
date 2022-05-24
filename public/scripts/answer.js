@@ -1,5 +1,4 @@
-const { text } = require("body-parser");
-
+//const { text } = require("body-parser");//
 function page_load() {
     // Simpel log check for localQuestionCounter (ligger i general.js)
     check_question_id();
