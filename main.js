@@ -51,8 +51,7 @@ app.get('/api/questionbreakdown/:id', async (req, res) => {
       processing, 
       packaging, 
       transport, 
-      retail,
-      img_path
+      retail
       FROM question
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id
       WHERE question_id=${req.params.id}`);
@@ -92,8 +91,7 @@ app.get('/api/result/:id', async (req, res) => {
       option_1,
       option_chosen,
       food_id,
-      co2e_per_kg,
-      img_path
+      co2e_per_kg
       FROM answer
       JOIN question ON answer.question_id=question.question_id
       JOIN food ON question.option_0=food.food_id OR question.option_1=food.food_id

@@ -36,7 +36,6 @@ function get_answer() {
         .then(response => response.json())
         .then(data => {
 
-            console.log(data);
             let currentQuestion = localStorage.getItem("localQuestionId");
             let correctAnswer;
             let answers = JSON.parse(localStorage.getItem('localAnswers'));
